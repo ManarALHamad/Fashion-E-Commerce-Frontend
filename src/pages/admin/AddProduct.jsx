@@ -94,7 +94,7 @@ const AddProduct = () => {
   const handleCategoryChange = (event) => {
     setSelectedCategory(event.target.value)
 
-   
+
     setFormData({
       ...formData,
       sub_category: "",
@@ -133,7 +133,7 @@ const AddProduct = () => {
     event.preventDefault()
 
     try {
-     
+
 
       const res = await fetch(`${BASE_URL}/products`, {
         method: "POST",
@@ -152,7 +152,7 @@ const AddProduct = () => {
 
       console.log("Product created:", product)
 
-    
+
 
       navigate("/admin/products")
     } catch (err) {
@@ -167,13 +167,13 @@ const AddProduct = () => {
 
       <form onSubmit={handleSubmit}>
 
-   
+
 
         <div>
           <label>Product Name</label>
 
           <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Product name" required />
-          
+
         </div>
 
 
@@ -181,7 +181,7 @@ const AddProduct = () => {
           <label>Category</label>
 
           <select value={selectedCategory} onChange={handleCategoryChange} required >
-   
+
          <option value="">Select Category</option>
          <option value="Dresses">Dresses</option>
          <option value="Sets">Abayas</option>
@@ -200,7 +200,7 @@ const AddProduct = () => {
         </div>
 
 
-       
+
 
         <div>
           <label>Sub Category</label>
@@ -219,7 +219,7 @@ const AddProduct = () => {
             <option value="pink"> Pink</option>
             <option value="green"> Green </option>
             <option value="orange"> Orange </option>
-            
+
 
             {filteredSubCategories.map((subCategory) => (
               <option key={subCategory._id} value={subCategory._id}>
@@ -244,7 +244,7 @@ const AddProduct = () => {
           <label>Product Images</label>
 
           <input type="file" accept="image/*" multiple onChange={handleImageChange} />
-           
+
           {images.length > 0 && (
             <p>{images.length} image(s) selected</p>
           )}
@@ -275,7 +275,7 @@ const AddProduct = () => {
               {variant.available && (
                 <>
                 <input type="number" name="price" step="0.001" min="0" placeholder="Price"
-                   
+
                     value={variant.price}
                     onChange={(event) =>
                       handleVariantChange(index, event)
@@ -311,7 +311,7 @@ const AddProduct = () => {
 
             <input type="checkbox" name="in_stock" checked={formData.in_stock} onChange={handleChange} />
 
-          
+
 
         </div>
 
