@@ -4,7 +4,7 @@ import { useNavigate } from "react-router"
 
 const BASE_URL = import.meta.env.VITE_BACK_END_SERVER_URL
 
-const AddProduct = () => {
+const ProductForm = () => {
   const navigate = useNavigate()
 
   const [categories, setCategories] = useState([])
@@ -327,4 +327,4 @@ const AddProduct = () => {
   )
 }
 
-export default AddProduct
+export default ProductForm

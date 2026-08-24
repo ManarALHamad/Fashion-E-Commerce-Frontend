@@ -5,8 +5,7 @@ import { Routes, Route, useNavigate } from "react-router"
 import { useEffect, useState } from "react"
 import SignInForm from "./pages/SignInForm"
 import Home from "./pages/Home"
-import AddProduct from "./pages/admin/AddProduct"
-
+import ProductForm from "./pages/admin/ProductForm"
 
 import * as productService from './services/productService'
 
@@ -42,7 +41,7 @@ const App = () => {
         <Route path="/" element={<Home />}/>
         <Route path='/auth/sign-up' element={<SignUpForm setUser={setUser} />} />
         <Route path='/auth/sign-in' element={<SignInForm setUser={setUser} />} />
-        <Route path="/admin/products/new" element={<AddProduct />} />
+        <Route path="/admin/products/new" element={<ProductForm />} />
       </Routes>
       </main>
     </div>
