@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { useParams } from 'react-router'
 import { useNavigate } from "react-router"
 
 const BASE_URL = import.meta.env.VITE_BACK_END_SERVER_URL
