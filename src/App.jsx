@@ -1,22 +1,36 @@
 import Nav from "./components/Nav"
 import SignUpForm from "./pages/SignUpForm"
 import './App.css'
-import { Routes, Route } from "react-router"
-import { useState } from "react"
+import { Routes, Route, useNavigate } from "react-router"
+import { useEffect, useState } from "react"
 import SignInForm from "./pages/SignInForm"
 import Home from "./pages/Home"
 
+import * as productService from './services/productService'
+
 const getUserFromToken = () => {
   const token = localStorage.getItem('token')
-
   if (!token) return null
-
   return JSON.parse(atob(token.split('.')[1])).payload
 }
 
 const App = () => {
+  const navigate = useNavigate()
 
   const [user, setUser] = useState(getUserFromToken())
+  const [products, setProducts] = useState([])
+
+  useEffect(() => {
+    const fetchAllProducts = async(formData) => {
+      const productsData = await productService.index()
+      setProducts(productsData)
+    }
+    if (user) fetchAllProducts()
+  }, [user])
+
+  const handleAddProduct = async (formData) => {
+    
+  }
   
   return (
     <div>
