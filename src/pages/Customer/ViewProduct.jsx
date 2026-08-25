@@ -1,26 +1,49 @@
 import { useParams } from "react-router"
 import { useState, useEffect } from "react"
-import { show } from "../../services/productService"
+import { index } from "../../services/productService"
 
 const ViewProduct = () => {
 const { id } = useParams()
 const [product, setProduct] = useState(null)
 const [loading, setLoading] = useState(true)
+const [selectedVariant, setSelectedVariant] = useState(null)
 
 useEffect(() => {
 const fetchProduct = async () => {
-const data = await show(id)
-    setProduct(data)
-    setLoading(false)
+try {
+    const allProducts = await index()
+const found = allProducts.find((p) => p._id === id)
+    setProduct(found)
+} catch (error) {
+console.log(error)
+} finally {
+ setLoading(false)
 }
-    fetchProduct()
+}
+fetchProduct()
 }, [id])
+
+if (loading) return <p>Loading ..</p>
+if (!product) return <p>Product not found.</p>
 
 return (
     <section>
-     <p>Product ID: {id}</p>
-    </section>
-    )
+    <h1>{product.name}</h1>
+    <p>{product.description}</p>
+
+<div>
+    {product.variants.map((variant) => (
+    <button
+    key={variant._id}
+    onClick={() => setSelectedVariant(variant)}
+    disabled={variant.inventory === 0}>
+{variant.size} - {variant.price} BHD
+</button>
+))}
+</div>
+
+</section>
+)
 }
 
 export default ViewProduct
