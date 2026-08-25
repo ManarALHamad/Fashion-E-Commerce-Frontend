@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react"
-import { useParams } from 'react-router'
 import { useNavigate } from "react-router"
 
 const BASE_URL = import.meta.env.VITE_BACK_END_SERVER_URL
@@ -128,38 +127,63 @@ const ProductForm = () => {
       String(subCategory.category) === String(selectedCategory)
   )
 
+const handleSubmit = async (event) => {
+  event.preventDefault()
 
+  try {
+    console.log("Sending to Django:", formData)
 
-  const handleSubmit = async (event) => {
-    event.preventDefault()
+    const res = await fetch(`${BASE_URL}/products`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
 
-    try {
+    const data = await res.json()
 
+    console.log("STATUS:", res.status)
+    console.log("DJANGO RESPONSE:", data)
 
-      const res = await fetch(`${BASE_URL}/products`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      })
-
-      const product = await res.json()
-
-      if (!res.ok) {
-        console.log(product)
-        throw new Error("Failed to create product")
-      }
-
-      console.log("Product created:", product)
-
-
-
-      navigate("/admin/products")
-    } catch (err) {
-      console.log(err)
+    if (!res.ok) {
+      throw new Error("Failed to create product")
     }
+
+    console.log("Product created:", data)
+
+    navigate("/admin/products")
+
+  } catch (err) {
+    console.log(err)
   }
+}
+
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault()
+  //   try {
+  //     const res = await fetch(`${BASE_URL}/products`, {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(formData),
+  //     })
+
+  //     const product = await res.json()
+
+  //     if (!res.ok) {
+  //       console.log(product)
+  //       throw new Error("Failed to create product")
+  //     }
+
+  //     console.log("Product created:", product)
+
+  //     navigate("/admin/products")
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
 
   return (
     <div className="add-product-page">
@@ -184,9 +208,7 @@ const ProductForm = () => {
           <select value={selectedCategory} onChange={handleCategoryChange} required >
 
          <option value="">Select Category</option>
-         <option value="Dresses">Dresses</option>
-         <option value="Sets">Abayas</option>
-         <option value="Jalabya">Jalabya</option>
+        
 
             {categories.map((category) => (
               <option
@@ -206,21 +228,10 @@ const ProductForm = () => {
         <div>
           <label>Sub Category</label>
 
-          <select
-            name="sub_category"
-            value={formData.sub_category}
-            onChange={handleChange}
-            required
-            disabled={!selectedCategory}
-          >
+          <select name="sub_category" value={formData.sub_category} onChange={handleChange} required disabled={!selectedCategory} >
 
             <option value=""> Select Sub Category</option>
-            <option value="blue"> Blue</option>
-            <option value="red"> Red</option>
-            <option value="pink"> Pink</option>
-            <option value="green"> Green </option>
-            <option value="orange"> Orange </option>
-
+       
 
             {filteredSubCategories.map((subCategory) => (
               <option key={subCategory._id} value={subCategory._id}>
@@ -304,7 +315,7 @@ const ProductForm = () => {
         </div>
 
 
-        {/* ACTIVE */}
+        
 
         <div>
 

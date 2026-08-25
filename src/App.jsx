@@ -6,8 +6,10 @@ import { useEffect, useState } from "react"
 import SignInForm from "./pages/SignInForm"
 import Home from "./pages/Home"
 import ProductForm from "./pages/admin/ProductForm"
-
 import * as productService from './services/productService'
+import AdminProducts from "./pages/admin/AdminProducts"
+
+
 
 const getUserFromToken = () => {
   const token = localStorage.getItem('token')
@@ -42,6 +44,7 @@ const App = () => {
         <Route path='/auth/sign-up' element={<SignUpForm setUser={setUser} />} />
         <Route path='/auth/sign-in' element={<SignInForm setUser={setUser} />} />
         <Route path="/admin/products/new" element={<ProductForm />} />
+        <Route path="/admin/products" element={<AdminProducts />} />
       </Routes>
       </main>
     </div>
