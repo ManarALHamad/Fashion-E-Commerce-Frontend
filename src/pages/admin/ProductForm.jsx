@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react"
-import { useNavigate } from "react-router"
+import { useNavigate, useParams } from "react-router"
 
 const BASE_URL = import.meta.env.VITE_BACK_END_SERVER_URL
 
 const ProductForm = () => {
   const navigate = useNavigate()
+  const {productId} = useParams()
 
   const [categories, setCategories] = useState([])
   const [subCategories, setSubCategories] = useState([])
@@ -12,12 +13,14 @@ const ProductForm = () => {
 
   const [selectedCategory, setSelectedCategory] = useState("")
 
-  const [formData, setFormData] = useState({
-    name: "",
-    description: "",
-    sub_category: "",
-    in_stock: true,
-  })
+  const initialState = {
+  name: "",
+  description: "",
+  sub_category: "",
+  in_stock: true,
+  }
+
+  const [formData, setFormData] = useState(initialState)
 
   const [variants, setVariants] = useState([
     {
@@ -81,6 +84,38 @@ const ProductForm = () => {
   }, [])
 
 
+  useEffect(() => {
+  const fetchProduct = async () => {
+    try {
+      const res = await fetch(`${BASE_URL}/products/${productId}`)
+
+      if (!res.ok) {
+        throw new Error("Failed to fetch product")
+      }
+
+      const productData = await res.json()
+
+      setFormData({
+        name: productData.name,
+        description: productData.description,
+        sub_category: productData.sub_category,
+        in_stock: productData.in_stock,
+      })
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  if (productId) {
+    fetchProduct()
+  }
+
+  return () => {
+    setFormData(initialState)
+  }
+  }, [productId])
+
+
   const handleChange = (event) => {
     const { name, value, type, checked } = event.target
 
@@ -131,10 +166,14 @@ const handleSubmit = async (event) => {
   event.preventDefault()
 
   try {
-    console.log("Sending to Django:", formData)
+    const url = productId
+      ? `${BASE_URL}/products/${productId}`
+      : `${BASE_URL}/products`
 
-    const res = await fetch(`${BASE_URL}/products`, {
-      method: "POST",
+    const method = productId ? "PUT" : "POST"
+
+    const res = await fetch(url, {
+      method: method,
       headers: {
         "Content-Type": "application/json",
       },
@@ -143,21 +182,25 @@ const handleSubmit = async (event) => {
 
     const data = await res.json()
 
-    console.log("STATUS:", res.status)
-    console.log("DJANGO RESPONSE:", data)
-
     if (!res.ok) {
-      throw new Error("Failed to create product")
+      console.log(data)
+      throw new Error(
+        productId
+          ? "Failed to update product"
+          : "Failed to create product"
+      )
     }
 
-    console.log("Product created:", data)
+    console.log(
+      productId ? "Product updated:" : "Product created:",
+      data
+    )
 
     navigate("/admin/products")
-
   } catch (err) {
     console.log(err)
   }
-}
+  }
 
   // const handleSubmit = async (event) => {
   //   event.preventDefault()
@@ -188,7 +231,7 @@ const handleSubmit = async (event) => {
   return (
     <div className="add-product-page">
 
-      <h1>Add Product</h1>
+      <h1>{productId ? "Edit Product" : "Add Product"}</h1>
 
       <form onSubmit={handleSubmit}>
 
@@ -329,7 +372,7 @@ const handleSubmit = async (event) => {
 
 
         <button type="submit">
-          Add Product
+          {productId ? "Update Product" : "Add Product"}
         </button>
 
       </form>

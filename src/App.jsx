@@ -44,6 +44,7 @@ const App = () => {
         <Route path='/auth/sign-up' element={<SignUpForm setUser={setUser} />} />
         <Route path='/auth/sign-in' element={<SignInForm setUser={setUser} />} />
         <Route path="/admin/products/new" element={<ProductForm />} />
+        <Route path="/admin/products/:productId/edit" element={<ProductForm />}/>
         <Route path="/admin/products" element={<AdminProducts />} />
       </Routes>
       </main>
