@@ -131,8 +131,9 @@ const handleSubmit = async (event) => {
   event.preventDefault()
 
   try {
-    console.log("Sending to Django:", formData)
+    console.log("Sending product:", formData)
 
+    
     const res = await fetch(`${BASE_URL}/products`, {
       method: "POST",
       headers: {
@@ -141,16 +142,39 @@ const handleSubmit = async (event) => {
       body: JSON.stringify(formData),
     })
 
-    const data = await res.json()
+    const product = await res.json()
 
     console.log("STATUS:", res.status)
-    console.log("DJANGO RESPONSE:", data)
+    console.log("DJANGO RESPONSE:", product)
 
     if (!res.ok) {
       throw new Error("Failed to create product")
     }
 
-    console.log("Product created:", data)
+    console.log("Product created:", product)
+
+   
+    for (const image of images) {
+      const imageData = new FormData()
+
+      imageData.append("image", image)
+
+      const imageRes = await fetch(
+        `${BASE_URL}/products/${product._id}/images`,
+        {
+          method: "POST",
+          body: imageData,
+        }
+      )
+
+      const imageResponse = await imageRes.json()
+
+      console.log("Image response:", imageResponse)
+
+      if (!imageRes.ok) {
+        throw new Error("Failed to upload image")
+      }
+    }
 
     navigate("/admin/products")
 
@@ -158,32 +182,7 @@ const handleSubmit = async (event) => {
     console.log(err)
   }
 }
-
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault()
-  //   try {
-  //     const res = await fetch(`${BASE_URL}/products`, {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(formData),
-  //     })
-
-  //     const product = await res.json()
-
-  //     if (!res.ok) {
-  //       console.log(product)
-  //       throw new Error("Failed to create product")
-  //     }
-
-  //     console.log("Product created:", product)
-
-  //     navigate("/admin/products")
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
+  
 
   return (
     <div className="add-product-page">
