@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 import SignInForm from "./pages/SignInForm"
 import Home from "./pages/Home"
 import ProductForm from "./pages/admin/ProductForm"
+import ViewProduct from "./pages/Customer/ViewProduct"
 import * as productService from './services/productService'
 import AdminProducts from "./pages/admin/AdminProducts"
 
@@ -45,6 +46,7 @@ const App = () => {
         <Route path='/auth/sign-in' element={<SignInForm setUser={setUser} />} />
         <Route path="/admin/products/new" element={<ProductForm />} />
         <Route path="/admin/products" element={<AdminProducts />} />
+        <Route path="/products/:id" element={<ViewProduct />} />
       </Routes>
       </main>
     </div>
