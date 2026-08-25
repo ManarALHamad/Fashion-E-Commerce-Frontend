@@ -8,7 +8,7 @@ import Home from "./pages/Home"
 import ProductForm from "./pages/admin/ProductForm"
 import * as productService from './services/productService'
 import AdminProducts from "./pages/admin/AdminProducts"
-
+import ProductDetails from "./pages/admin/ProductDetails"
 
 
 const getUserFromToken = () => {
@@ -45,6 +45,7 @@ const App = () => {
         <Route path='/auth/sign-in' element={<SignInForm setUser={setUser} />} />
         <Route path="/admin/products/new" element={<ProductForm />} />
         <Route path="/admin/products" element={<AdminProducts />} />
+        <Route path="/admin/products/:productId" element={<ProductDetails />} />
       </Routes>
       </main>
     </div>
