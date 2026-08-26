@@ -9,6 +9,20 @@ const { productId } = useParams
 const [product, setProduct] = useState(null)
 const [loading, setLoading] = useState(true)
 
+useEffect(() =>{
+    const fetchProduct = async () => {
+        try {
+        const data = await show(productId)
+        setProduct(data)
+        setLoading(false)
+        } catch (error) {
+            console.log(error)
+            setLoading(false)
+        }
+    }
+fetchProduct()
+}, [productId])
+
     return <main>Customer Details</main>
 }
 
