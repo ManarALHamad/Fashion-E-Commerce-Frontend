@@ -23,6 +23,9 @@ useEffect(() =>{
 fetchProduct()
 }, [productId])
 
+if (loading) return <p>Loading..</p>
+if (!loading) return <p>Product not found</p>
+
     return <main>Customer Details</main>
 }
 
