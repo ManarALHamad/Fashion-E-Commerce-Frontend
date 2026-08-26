@@ -1,6 +1,9 @@
 
 import { useEffect, useState } from "react"
-import { useParams, Link } from "react-router"
+import { useParams, Link, useNavigate } from "react-router"
+
+import * as productService from '../../services/productService'
+
 
 const BASE_URL = import.meta.env.VITE_BACK_END_SERVER_URL
 
@@ -11,6 +14,8 @@ const ProductDetails = () => {
   const [product, setProduct] = useState(null)
   const [loading, setLoading] = useState(true)
   const [selectedImage, setSelectedImage] = useState(0)
+
+  const navigate = useNavigate()
 
   useEffect(() => {
 
@@ -42,6 +47,10 @@ const ProductDetails = () => {
 
   }, [productId])
 
+  const handleDeleteProduct = async(productId) =>{
+    await productService.deleteProduct(productId)
+    navigate('/admin/products')
+  }
 
   if (loading) {
     return <p>Loading product...</p>
@@ -159,10 +168,8 @@ const ProductDetails = () => {
 
 
       <Link to={`/admin/products/${product._id}/edit`}>Edit Product </Link>
-        
+      <button onClick={() => handleDeleteProduct(productId)}>Delete</button>
       
-        
-     
 
     </div>
   )

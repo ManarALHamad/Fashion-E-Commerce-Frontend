@@ -133,7 +133,7 @@ const handleSubmit = async (event) => {
   try {
     console.log("Sending product:", formData)
 
-    
+
     const res = await fetch(`${BASE_URL}/products`, {
       method: "POST",
       headers: {
@@ -153,7 +153,7 @@ const handleSubmit = async (event) => {
 
     console.log("Product created:", product)
 
-   
+
     for (const image of images) {
       const imageData = new FormData()
 
@@ -182,7 +182,7 @@ const handleSubmit = async (event) => {
     console.log(err)
   }
 }
-  
+
 
   return (
     <div className="add-product-page">
@@ -207,7 +207,7 @@ const handleSubmit = async (event) => {
           <select value={selectedCategory} onChange={handleCategoryChange} required >
 
          <option value="">Select Category</option>
-        
+
 
             {categories.map((category) => (
               <option
@@ -230,7 +230,7 @@ const handleSubmit = async (event) => {
           <select name="sub_category" value={formData.sub_category} onChange={handleChange} required disabled={!selectedCategory} >
 
             <option value=""> Select Sub Category</option>
-       
+
 
             {filteredSubCategories.map((subCategory) => (
               <option key={subCategory._id} value={subCategory._id}>
@@ -314,7 +314,7 @@ const handleSubmit = async (event) => {
         </div>
 
 
-        
+
 
         <div>
 
