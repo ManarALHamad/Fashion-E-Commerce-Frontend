@@ -25,10 +25,13 @@ fetchProduct()}, [id])
 if (loading) return <p>Loading ..</p>
 if (!product) return <p>Product not found.</p>
 
+
 return (
  <section>
-    {product.images?.[0] && (
-    <img src={product.images[0].image} />
+{product.images?.[0] && (
+    <img className="view-product-image"
+    src={`${import.meta.env.VITE_BACK_END_SERVER_URL}${product.images[0].image}`}
+    />
 )}
 
     <h1>{product.name}</h1>
