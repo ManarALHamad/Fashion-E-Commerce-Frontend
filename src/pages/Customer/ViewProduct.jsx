@@ -1,26 +1,28 @@
-import { useParams } from "react-router"
+import { useParams, useNavigate} from "react-router"
 import { useState, useEffect } from "react"
-import { index } from "../../services/productService"
+import { show } from "../../services/productService"
 
 const ViewProduct = () => {
-const { id } = useParams()
+const { productId } = useParams()
 const [product, setProduct] = useState(null)
 const [loading, setLoading] = useState(true)
 const [selectedVariant, setSelectedVariant] = useState(null)
+const navigate = useNavigate()
+
 
 useEffect(() => {
     const fetchProduct = async () => {
     try {
-        const allProducts = await index()
-        const found = allProducts.find((p) => String(p._id) === id)
-        setProduct(found)
+        const data = await show(productId)
+        setProduct(data)
         setLoading(false)
-} catch (error) {
-    console.log(error)
-    setLoading(false)
-} 
-}
-fetchProduct()}, [id])
+    } catch (error) {
+        console.log(error)
+        setLoading(false)
+    } 
+    }
+    fetchProduct()
+}, [productId])
 
 if (loading) return <p>Loading ..</p>
 if (!product) return <p>Product not found.</p>
@@ -38,7 +40,7 @@ return (
     <p>{product.description}</p>
 
     <div>
-{product.variants.map((variant) => (
+{product.variants?.map((variant) => (
 <button
 key={variant._id}
 onClick={() => setSelectedVariant(variant)}
@@ -49,7 +51,12 @@ disabled={variant.inventory === 0}
 ))}
 </div>
 
-<button disabled={!selectedVariant}>Add to Cart</button>
+<button disabled={!selectedVariant}
+onClick={() => {
+
+console.log(`Added size ${selectedVariant.size} to cart!`)
+}}
+>Add to Cart</button>
         </section>
     )
 }
