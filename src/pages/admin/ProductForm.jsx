@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react"
-import { useNavigate, useParams } from "react-router"
+import { useNavigate } from "react-router"
 
 const BASE_URL = import.meta.env.VITE_BACK_END_SERVER_URL
 
 const ProductForm = () => {
   const navigate = useNavigate()
-  const {productId} = useParams()
 
   const [categories, setCategories] = useState([])
   const [subCategories, setSubCategories] = useState([])
@@ -13,14 +12,12 @@ const ProductForm = () => {
 
   const [selectedCategory, setSelectedCategory] = useState("")
 
-  const initialState = {
-  name: "",
-  description: "",
-  sub_category: "",
-  in_stock: true,
-  }
-
-  const [formData, setFormData] = useState(initialState)
+  const [formData, setFormData] = useState({
+    name: "",
+    description: "",
+    sub_category: "",
+    in_stock: true,
+  })
 
   const [variants, setVariants] = useState([
     {
@@ -84,38 +81,6 @@ const ProductForm = () => {
   }, [])
 
 
-  useEffect(() => {
-  const fetchProduct = async () => {
-    try {
-      const res = await fetch(`${BASE_URL}/products/${productId}`)
-
-      if (!res.ok) {
-        throw new Error("Failed to fetch product")
-      }
-
-      const productData = await res.json()
-
-      setFormData({
-        name: productData.name,
-        description: productData.description,
-        sub_category: productData.sub_category,
-        in_stock: productData.in_stock,
-      })
-    } catch (err) {
-      console.log(err)
-    }
-  }
-
-  if (productId) {
-    fetchProduct()
-  }
-
-  return () => {
-    setFormData(initialState)
-  }
-  }, [productId])
-
-
   const handleChange = (event) => {
     const { name, value, type, checked } = event.target
 
@@ -166,72 +131,63 @@ const handleSubmit = async (event) => {
   event.preventDefault()
 
   try {
-    const url = productId
-      ? `${BASE_URL}/products/${productId}`
-      : `${BASE_URL}/products`
+    console.log("Sending product:", formData)
 
-    const method = productId ? "PUT" : "POST"
 
-    const res = await fetch(url, {
-      method: method,
+    const res = await fetch(`${BASE_URL}/products`, {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
     })
 
-    const data = await res.json()
+    const product = await res.json()
+
+    console.log("STATUS:", res.status)
+    console.log("DJANGO RESPONSE:", product)
 
     if (!res.ok) {
-      console.log(data)
-      throw new Error(
-        productId
-          ? "Failed to update product"
-          : "Failed to create product"
-      )
+      throw new Error("Failed to create product")
     }
 
-    console.log(
-      productId ? "Product updated:" : "Product created:",
-      data
-    )
+    console.log("Product created:", product)
+
+
+    for (const image of images) {
+      const imageData = new FormData()
+
+      imageData.append("image", image)
+
+      const imageRes = await fetch(
+        `${BASE_URL}/products/${product._id}/images`,
+        {
+          method: "POST",
+          body: imageData,
+        }
+      )
+
+      const imageResponse = await imageRes.json()
+
+      console.log("Image response:", imageResponse)
+
+      if (!imageRes.ok) {
+        throw new Error("Failed to upload image")
+      }
+    }
 
     navigate("/admin/products")
+
   } catch (err) {
     console.log(err)
   }
-  }
+}
 
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault()
-  //   try {
-  //     const res = await fetch(`${BASE_URL}/products`, {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(formData),
-  //     })
-
-  //     const product = await res.json()
-
-  //     if (!res.ok) {
-  //       console.log(product)
-  //       throw new Error("Failed to create product")
-  //     }
-
-  //     console.log("Product created:", product)
-
-  //     navigate("/admin/products")
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
 
   return (
     <div className="add-product-page">
 
-      <h1>{productId ? "Edit Product" : "Add Product"}</h1>
+      <h1>Add Product</h1>
 
       <form onSubmit={handleSubmit}>
 
@@ -251,7 +207,7 @@ const handleSubmit = async (event) => {
           <select value={selectedCategory} onChange={handleCategoryChange} required >
 
          <option value="">Select Category</option>
-        
+
 
             {categories.map((category) => (
               <option
@@ -274,7 +230,7 @@ const handleSubmit = async (event) => {
           <select name="sub_category" value={formData.sub_category} onChange={handleChange} required disabled={!selectedCategory} >
 
             <option value=""> Select Sub Category</option>
-       
+
 
             {filteredSubCategories.map((subCategory) => (
               <option key={subCategory._id} value={subCategory._id}>
@@ -358,7 +314,7 @@ const handleSubmit = async (event) => {
         </div>
 
 
-        
+
 
         <div>
 
@@ -372,7 +328,7 @@ const handleSubmit = async (event) => {
 
 
         <button type="submit">
-          {productId ? "Update Product" : "Add Product"}
+          Add Product
         </button>
 
       </form>
