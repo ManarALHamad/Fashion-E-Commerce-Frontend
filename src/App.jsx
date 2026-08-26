@@ -10,7 +10,7 @@ import ViewProduct from "./pages/Customer/ViewProduct"
 import * as productService from './services/productService'
 import ProductDetails from "./pages/admin/ProductDetails"
 import AdminProducts from "./pages/admin/AdminProducts"
-
+import ProductDetails from "./pages/admin/ProductDetails"
 
 
 const getUserFromToken = () => {

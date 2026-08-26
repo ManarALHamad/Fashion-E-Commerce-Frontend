@@ -107,18 +107,13 @@ const AdminProducts = () => {
 
               <div className="product-actions">
 
-                <Link
-                  to={`/admin/products/${product._id}`}
-                >
-                  View
-                </Link>
-
-                <Link
-                  to={`/admin/products/${product._id}/edit`}
-                >
-                  Edit
-                </Link>
-
+                <Link to={`/admin/products/${product._id}`} > View</Link>
+                  
+        
+                <Link to={`/admin/products/${product._id}/edit`}> Edit </Link>
+                  
+                
+      
               </div>
 
             </div>
