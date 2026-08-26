@@ -9,41 +9,44 @@ const [loading, setLoading] = useState(true)
 const [selectedVariant, setSelectedVariant] = useState(null)
 
 useEffect(() => {
-const fetchProduct = async () => {
-try {
-    const allProducts = await index()
-const found = allProducts.find((p) => p._id === id)
-    setProduct(found)
+    const fetchProduct = async () => {
+    try {
+        const allProducts = await index()
+        const found = allProducts.find((p) => String(p._id) === id)
+        setProduct(found)
 } catch (error) {
-console.log(error)
-} finally {
- setLoading(false)
+    console.log(error)
+} 
 }
-}
-fetchProduct()
-}, [id])
+fetchProduct()}, [id])
 
 if (loading) return <p>Loading ..</p>
 if (!product) return <p>Product not found.</p>
 
 return (
-    <section>
+ <section>
+    {product.images?.[0] && (
+    <img src={product.images[0].image} />
+)}
+
     <h1>{product.name}</h1>
     <p>{product.description}</p>
 
-<div>
-    {product.variants.map((variant) => (
-    <button
-    key={variant._id}
-    onClick={() => setSelectedVariant(variant)}
-    disabled={variant.inventory === 0}>
+    <div>
+{product.variants.map((variant) => (
+<button
+key={variant._id}
+onClick={() => setSelectedVariant(variant)}
+disabled={variant.inventory === 0}
+>
 {variant.size} - {variant.price} BHD
 </button>
 ))}
 </div>
 
-</section>
-)
+<button disabled={!selectedVariant}>Add to Cart</button>
+        </section>
+    )
 }
 
 export default ViewProduct
