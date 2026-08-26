@@ -14,8 +14,10 @@ useEffect(() => {
         const allProducts = await index()
         const found = allProducts.find((p) => String(p._id) === id)
         setProduct(found)
+        setLoading(false)
 } catch (error) {
     console.log(error)
+    setLoading(false)
 } 
 }
 fetchProduct()}, [id])
