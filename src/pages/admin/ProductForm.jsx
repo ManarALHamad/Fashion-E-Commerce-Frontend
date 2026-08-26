@@ -17,6 +17,7 @@ const ProductForm = () => {
     description: "",
     sub_category: "",
     in_stock: true,
+    
   })
 
   const [variants, setVariants] = useState([
@@ -175,13 +176,37 @@ const handleSubmit = async (event) => {
         throw new Error("Failed to upload image")
       }
     }
+      const availableVariants = variants.filter((v) => v.available)
 
+    for (const variant of availableVariants) {
+      const variantRes = await fetch(
+        `${BASE_URL}/products/${product._id}/variants`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            size: variant.size,
+            price: variant.price,
+            inventory: variant.inventory,
+          }),
+        }
+      )
+
+      const variantResponse = await variantRes.json()
+      console.log("Variant response:", variantResponse)
+
+      if (!variantRes.ok) {
+        throw new Error("Failed to create variant")
+      }
+    }
     navigate("/admin/products")
 
   } catch (err) {
     console.log(err)
   }
 }
+
+
 
 
   return (
