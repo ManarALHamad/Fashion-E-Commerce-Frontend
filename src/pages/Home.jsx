@@ -1,4 +1,6 @@
 import { Link } from "react-router"
+import { useEffect, useState } from "react"
+
 import {
   Search,
   UserRound,
@@ -9,6 +11,33 @@ import logo from "../assets/images/logo.png"
 
 
 const Home = () => {
+
+    const [products, setProducts] = useState([])
+    const [loading, setLoading] = useState(true)
+
+    useEffect (() => {
+
+        const fetchProducts = async () =>{
+
+            try {
+                const data = await index()
+                setProducts(data)
+                
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+        fetchProducts()
+
+
+    }, [])
+
+
+
+
+
+
   return (
     <main className="home">
 

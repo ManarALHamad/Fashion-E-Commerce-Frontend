@@ -1,5 +1,4 @@
 
-//view products to the admin dashboard
 import { useEffect, useState } from "react"
 import { Link } from "react-router"
 
@@ -109,7 +108,6 @@ const AdminProducts = () => {
 
                 <Link to={`/admin/products/${product._id}`} > View</Link>
                   
-        
                 <Link to={`/admin/products/${product._id}/edit`}> Edit </Link>
                   
                 
