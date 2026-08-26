@@ -10,7 +10,7 @@ import ViewProduct from "./pages/Customer/ViewProduct"
 import * as productService from './services/productService'
 import AdminProducts from "./pages/admin/AdminProducts"
 import ProductDetails from "./pages/admin/ProductDetails"
-
+import CustomerProductDetails from "./pages/Customer/customerProductDetails"
 
 const getUserFromToken = () => {
   const token = localStorage.getItem('token')
@@ -48,6 +48,7 @@ const App = () => {
         <Route path="/admin/products" element={<AdminProducts />} />
         <Route path="/admin/products/:productId" element={<ProductDetails />} />
         <Route path="/products/:productId" element={<ViewProduct />} />
+        <Route path="products/:productId" element={<CustomerProductDetails/> } />
       </Routes>
       </main>
     </div>
