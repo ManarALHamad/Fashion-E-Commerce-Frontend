@@ -17,6 +17,10 @@
   }
 }
 
+.view-product-image {
+  max-width: 100px;
+}
+
 .hero {
   position: relative;
 

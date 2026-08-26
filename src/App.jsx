@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 import SignInForm from "./pages/SignInForm"
 import Home from "./pages/Home"
 import ProductForm from "./pages/admin/ProductForm"
+import ViewProduct from "./pages/Customer/ViewProduct"
 import * as productService from './services/productService'
 import AdminProducts from "./pages/admin/AdminProducts"
 import ProductDetails from "./pages/admin/ProductDetails"
@@ -46,6 +47,7 @@ const App = () => {
         <Route path="/admin/products/new" element={<ProductForm />} />
         <Route path="/admin/products" element={<AdminProducts />} />
         <Route path="/admin/products/:productId" element={<ProductDetails />} />
+        <Route path="/products/:productId" element={<ViewProduct />} />
       </Routes>
       </main>
     </div>
