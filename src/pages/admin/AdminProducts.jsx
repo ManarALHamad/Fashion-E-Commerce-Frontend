@@ -57,13 +57,14 @@ const AdminProducts = () => {
               key={product._id}
             >
 
-              {/* PRODUCT IMAGE */}
+      
 
               {product.images?.length > 0 ? (
                 <img
-                  src={product.images[0].image}
+                  src={`${BASE_URL}${product.images[0].image}`}
                   alt={product.name}
                   className="admin-product-image"
+                  style={{ width: "120px", height: "150px", objectFit: "cover" }}
                 />
               ) : (
                 <div className="no-product-image">
@@ -71,7 +72,7 @@ const AdminProducts = () => {
                 </div>
               )}
 
-              {/* PRODUCT INFO */}
+             
 
               <h3>{product.name}</h3>
 
@@ -84,7 +85,8 @@ const AdminProducts = () => {
                 {product.in_stock ? "In Stock" : "Out of Stock"}
               </p>
 
-              {/* SIZES */}
+  
+  
 
               <div>
                 <strong>Sizes:</strong>
@@ -101,22 +103,17 @@ const AdminProducts = () => {
                 )}
               </div>
 
-              {/* ACTIONS */}
+            
 
               <div className="product-actions">
 
-                <Link
-                  to={`/admin/products/${product._id}`}
-                >
-                  View
-                </Link>
-
-                <Link
-                  to={`/admin/products/${product._id}/edit`}
-                >
-                  Edit
-                </Link>
-
+                <Link to={`/admin/products/${product._id}`} > View</Link>
+                  
+        
+                <Link to={`/admin/products/${product._id}/edit`}> Edit </Link>
+                  
+                
+      
               </div>
 
             </div>
