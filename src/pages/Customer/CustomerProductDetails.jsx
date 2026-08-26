@@ -10,6 +10,7 @@ const [product, setProduct] = useState(null)
 const [loading, setLoading] = useState(true)
 const [selectedImage, setSelectedImage] = useState(0)
 const [selectedVariant, setSelectedVariant] = useState(null)
+const [quantity, setQuantity] = useState(1)
 
 useEffect(() =>{
     const fetchProduct = async () => {
@@ -27,6 +28,10 @@ useEffect(() =>{
     }
 fetchProduct()
 }, [productId])
+
+const handleAddToCart = () => {
+    
+}
 
 if (loading) return <p>Loading..</p>
 if (!loading) return <p>Product not found</p>
