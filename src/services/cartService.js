@@ -5,6 +5,7 @@ const getCart = () => {
 
 const addToCart = (item) => {
   const cart = getCart()
+
   const existingItem = cart.find(
     (cartItem) => cartItem.variantId === item.variantId
   )
@@ -13,14 +14,44 @@ const addToCart = (item) => {
   } else {
     cart.push(item)
   }
+
   localStorage.setItem("cart", JSON.stringify(cart))
+  return cart
 }
 
 const removeFromCart = (variantId) => {
   const cart = getCart()
-  const updatedCart = cart.filter(item => item.variantId !== variantId)
+  const existingItem = cart.find(
+    (cartItem) => cartItem.variantId === variantId
+  )
+  if (!existingItem){
+    return cart
+  }
+
+  let updatedCart
+
+  if (existingItem.quantity > 1) {
+    updatedCart = cart.map((cartItem) => {
+
+      if (cartItem.variantId === variantId) {
+        return {
+          ...cartItem,
+          quantity: cartItem.quantity - 1,
+        }
+      }
+
+      return cartItem
+    })
+
+  } else {
+
+    updatedCart = cart.filter(
+      (cartItem) => cartItem.variantId !== variantId
+    )
+  }
+
   localStorage.setItem("cart", JSON.stringify(updatedCart))
-  window.location.reload()
+  return updatedCart
 }
 
 export { getCart, addToCart, removeFromCart}
