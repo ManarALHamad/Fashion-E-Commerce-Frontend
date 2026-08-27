@@ -6,7 +6,7 @@ import { addToCart } from "../../services/cartService"
 const BASE_URL = import.meta.env.VITE_BACK_END_SERVER_URL
 
 const CustomerProductDetails = () => {
-const { productId } = useParams
+const { productId } = useParams()
 const [product, setProduct] = useState(null)
 const [loading, setLoading] = useState(true)
 const [selectedImage, setSelectedImage] = useState(0)
@@ -47,7 +47,7 @@ return
 
 
 if (loading) return <p>Loading..</p>
-if (!loading) return <p>Product not found</p>
+if (!product) return <p>Product not found</p>
 
 return (
 <div>
