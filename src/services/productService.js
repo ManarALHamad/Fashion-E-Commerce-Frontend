@@ -1,20 +1,21 @@
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/products`
 
+//customer can view products
 const index = async() => {
     try{
         const res = await fetch(BASE_URL, {
-            headers: {Authorization: `Bearer ${localStorage.getItem('token')}` },
+            // headers: {Authorization: `Bearer ${localStorage.getItem('token')}` },
         })
         return res.json()
     }catch(error) {
         console.log(error)
     }
 }
-
+//customer can see products details
 const show = async(productId) => {
     try{
         const res = await fetch(`${BASE_URL}/${productId}`, {
-            headers: { Authorization: `Bearer ${localStorage.getItem('token')}`},
+            // headers: { Authorization: `Bearer ${localStorage.getItem('token')}`},
         })
         return res.json()
     }catch(error){
