@@ -1,64 +1,68 @@
-import { useParams, useNavigate} from "react-router"
-import { useState, useEffect } from "react"
-import { show } from "../../services/productService"
+import { useEffect, useState } from "react"
+import { Link } from "react-router"
+import { index } from "../../services/productService"
+
+const BASE_URL = import.meta.env.VITE_BACK_END_SERVER_URL
 
 const ViewProduct = () => {
-const { productId } = useParams()
-const [product, setProduct] = useState(null)
-const [loading, setLoading] = useState(true)
-const [selectedVariant, setSelectedVariant] = useState(null)
-const navigate = useNavigate()
+  const [products, setProducts] = useState([])
+  const [loading, setLoading] = useState(true)
 
-
-useEffect(() => {
-    const fetchProduct = async () => {
-    try {
-        const data = await show(productId)
-        setProduct(data)
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const data = await index()
+        console.log("Products:", data)
+        setProducts(data)
+      } catch (err) {
+        console.log(err)
+      } finally {
         setLoading(false)
-    } catch (error) {
-        console.log(error)
-        setLoading(false)
-    } 
+      }
     }
-    fetchProduct()
-}, [productId])
 
-if (loading) return <p>Loading ..</p>
-if (!product) return <p>Product not found.</p>
+    fetchProducts()
+  }, [])
 
+  if (loading) {
+    return <p>Loading products...</p>
+  }
 
-return (
- <section>
-{product.images?.[0] && (
-    <img className="view-product-image"
-    src={`${import.meta.env.VITE_BACK_END_SERVER_URL}${product.images[0].image}`}
-    />
-)}
+  return (
+    <div className="products-page">
+      <h1>Shop All Products</h1>
 
-    <h1>{product.name}</h1>
-    <p>{product.description}</p>
+      {products.length === 0 ? (
+        <p>No products yet.</p>
+      ) : (
+        <div className="product-grid">
+          {products.map((product) => (
+            <Link
+              to={`/products/${product._id}`}
+              className="product-card"
+              key={product._id}
+            >
+              {product.images?.length > 0 ? (
+                <img
+                  src={`${BASE_URL}${product.images[0].image}`}
+                  alt={product.name}
+                  className="product-card-image"
+                />
+              ) : (
+                <div className="no-product-image">No Image</div>
+              )}
 
-    <div>
-{product.variants?.map((variant) => (
-<button
-key={variant._id}
-onClick={() => setSelectedVariant(variant)}
-disabled={variant.inventory === 0}
->
-{variant.size} - {variant.price} BHD
-</button>
-))}
-</div>
+              <h3>{product.name}</h3>
 
-<button disabled={!selectedVariant}
-onClick={() => {
-
-console.log(`Added size ${selectedVariant.size} to cart!`)
-}}
->Add to Cart</button>
-        </section>
-    )
+              {product.variants?.length > 0 && (
+                <p>From {product.variants[0].price} BHD</p>
+              )}
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
+  )
 }
 
 export default ViewProduct
