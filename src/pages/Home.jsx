@@ -9,7 +9,8 @@ import {
 } from "lucide-react"
 
 import logo from "../assets/images/logo.png"
-import { index } from "../services/productService"
+
+import ViewProduct from "./Customer/ViewProduct"
 
 
 const Home = () => {
@@ -83,54 +84,7 @@ const Home = () => {
 
       </header>
 
-      <section className="product-section">
-
-
-        <h1>All</h1>
-
-      {loading ? (
-
-          <p>Loading products...</p>
-
-        ) : (
-          <div className="products-grid">
-
-            {products.map((product) => (
-
-              <Link
-                to={`/products/${product._id}`}
-                key={product._id}
-                className="product-card"
-              >
-
-                {product.images?.[0] && (
-                  <img
-                    src={`${import.meta.env.VITE_BACK_END_SERVER_URL}${product.images[0].image}`}
-                    alt={product.name}
-                    className="product-image"
-                  />
-                )}
-
-                <div className="product-info">
-
-                  <h2>{product.name}</h2>
-
-                  {product.variants?.[0] && (
-                    <p>
-                      {product.variants[0].price} BHD
-                    </p>
-                  )}
-
-                </div>
-
-              </Link>
-
-            ))}
-
-          </div>
-        )}
-
-      </section>
+      <ViewProduct />
 
     </main>
   )
