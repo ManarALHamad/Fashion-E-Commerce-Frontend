@@ -9,7 +9,7 @@ import {
 } from "lucide-react"
 
 import logo from "../assets/images/logo.png"
-import { index} from "../services/productService"
+import { index } from "../services/productService"
 
 
 const Home = () => {
@@ -91,7 +91,7 @@ const Home = () => {
       {loading ? (
 
           <p>Loading products...</p>
-          
+
         ) : (
           <div className="products-grid">
 
@@ -130,17 +130,7 @@ const Home = () => {
           </div>
         )}
 
-
-
-
       </section>
-
-
-
-
-
-
-
 
     </main>
   )
