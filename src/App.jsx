@@ -12,12 +12,9 @@ import AdminProducts from "./pages/admin/AdminProducts"
 import ProductDetails from "./pages/admin/ProductDetails"
 import CustomerProductDetails from "./pages/Customer/customerProductDetails"
 import ProductEdit from "./pages/admin/ProductEdit"
-<<<<<<< HEAD
 import NewCollection from "./pages/Customer/NewCollection"
-=======
 import Cart from "./pages/Customer/Cart"
 
->>>>>>> main
 
 const getUserFromToken = () => {
   const token = localStorage.getItem('token')
