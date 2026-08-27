@@ -17,6 +17,7 @@ const ProductForm = () => {
     description: "",
     sub_category: "",
     in_stock: true,
+    
   })
 
   const [variants, setVariants] = useState([
@@ -133,7 +134,7 @@ const handleSubmit = async (event) => {
   try {
     console.log("Sending product:", formData)
 
-    
+
     const res = await fetch(`${BASE_URL}/products`, {
       method: "POST",
       headers: {
@@ -153,7 +154,7 @@ const handleSubmit = async (event) => {
 
     console.log("Product created:", product)
 
-   
+
     for (const image of images) {
       const imageData = new FormData()
 
@@ -175,14 +176,38 @@ const handleSubmit = async (event) => {
         throw new Error("Failed to upload image")
       }
     }
+      const availableVariants = variants.filter((v) => v.available)
 
+    for (const variant of availableVariants) {
+      const variantRes = await fetch(
+        `${BASE_URL}/products/${product._id}/variants`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            size: variant.size,
+            price: variant.price,
+            inventory: variant.inventory,
+          }),
+        }
+      )
+
+      const variantResponse = await variantRes.json()
+      console.log("Variant response:", variantResponse)
+
+      if (!variantRes.ok) {
+        throw new Error("Failed to create variant")
+      }
+    }
     navigate("/admin/products")
 
   } catch (err) {
     console.log(err)
   }
 }
-  
+
+
+
 
   return (
     <div className="add-product-page">
@@ -207,7 +232,7 @@ const handleSubmit = async (event) => {
           <select value={selectedCategory} onChange={handleCategoryChange} required >
 
          <option value="">Select Category</option>
-        
+
 
             {categories.map((category) => (
               <option
@@ -230,7 +255,7 @@ const handleSubmit = async (event) => {
           <select name="sub_category" value={formData.sub_category} onChange={handleChange} required disabled={!selectedCategory} >
 
             <option value=""> Select Sub Category</option>
-       
+
 
             {filteredSubCategories.map((subCategory) => (
               <option key={subCategory._id} value={subCategory._id}>
@@ -314,7 +339,7 @@ const handleSubmit = async (event) => {
         </div>
 
 
-        
+
 
         <div>
 
