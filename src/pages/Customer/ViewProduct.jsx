@@ -36,7 +36,7 @@ const ViewProduct = () => {
         <p>No products yet.</p>
       ) : (
         <div className="product-grid">
-          {products.map((product) => (
+          {products?.map((product) => (
             <Link
               to={`/products/${product._id}`}
               className="product-card"
