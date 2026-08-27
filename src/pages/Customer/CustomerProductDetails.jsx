@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams, Link } from "react-router"
+import { useParams, Link, useNavigate } from "react-router"
 import { show } from "../../services/productService"
 import { addToCart } from "../../services/cartService"
 
@@ -7,6 +7,7 @@ const BASE_URL = import.meta.env.VITE_BACK_END_SERVER_URL
 
 const CustomerProductDetails = () => {
   const { productId } = useParams()
+  const navigate = useNavigate()
 
   const [product, setProduct] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -44,7 +45,7 @@ const CustomerProductDetails = () => {
       quantity: 1,
     })
 
-    alert(`Added ${product.name} (${selectedVariant.size}) to cart!`)
+    navigate(`/cart`)
   }
 
   if (loading) return <p>Loading product...</p>
