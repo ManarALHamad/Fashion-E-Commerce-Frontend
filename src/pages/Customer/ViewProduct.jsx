@@ -12,48 +12,55 @@ const ViewProduct = () => {
     const fetchProducts = async () => {
       try {
         const data = await index()
+        console.log("Products:", data)
         setProducts(data)
-      } catch (error) {
-        console.log(error)
+      } catch (err) {
+        console.log(err)
+      } finally {
+        setLoading(false)
       }
-      setLoading(false)
     }
 
     fetchProducts()
   }, [])
 
-  if (loading) return <p>Loading products...</p>
-  if (products.length === 0) return <p>No products available.</p>
+  if (loading) {
+    return <p>Loading products...</p>
+  }
 
   return (
-    <div className="product-gallery-page">
+    <div className="products-page">
       <h1>Shop All Products</h1>
 
-      <div className="product-grid">
-        {products.map((product) => (
-          <Link
-            key={product._id}
-            to={`/products/${product._id}`}
-            className="product-card"
-          >
-            {product.images?.length > 0 ? (
-              <img
-                src={`${BASE_URL}${product.images[0].image}`}
-                alt={product.name}
-                className="product-card-image"
-              />
-            ) : (
-              <div className="no-product-image">No image</div>
-            )}
+      {products.length === 0 ? (
+        <p>No products yet.</p>
+      ) : (
+        <div className="product-grid">
+          {products.map((product) => (
+            <Link
+              to={`/products/${product._id}`}
+              className="product-card"
+              key={product._id}
+            >
+              {product.images?.length > 0 ? (
+                <img
+                  src={`${BASE_URL}${product.images[0].image}`}
+                  alt={product.name}
+                  className="product-card-image"
+                />
+              ) : (
+                <div className="no-product-image">No Image</div>
+              )}
 
-            <h3>{product.name}</h3>
+              <h3>{product.name}</h3>
 
-            {product.variants?.length > 0 && (
-              <p>From {product.variants[0].price} BHD</p>
-            )}
-          </Link>
-        ))}
-      </div>
+              {product.variants?.length > 0 && (
+                <p>From {product.variants[0].price} BHD</p>
+              )}
+            </Link>
+          ))}
+        </div>
+      )}
     </div>
   )
 }
