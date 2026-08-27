@@ -5,8 +5,22 @@ const getCart = () => {
 
 const addToCart = (item) => {
   const cart = getCart()
-  cart.push(item)
+  const existingItem = cart.find(
+    (cartItem) => cartItem.variantId === item.variantId
+  )
+  if (existingItem) {
+    existingItem.quantity += 1
+  } else {
+    cart.push(item)
+  }
   localStorage.setItem("cart", JSON.stringify(cart))
 }
 
-export { getCart, addToCart }
+const removeFromCart = (variantId) => {
+  const cart = getCart()
+  const updatedCart = cart.filter(item => item.variantId !== variantId)
+  localStorage.setItem("cart", JSON.stringify(updatedCart))
+  window.location.reload()
+}
+
+export { getCart, addToCart, removeFromCart}
