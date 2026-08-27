@@ -107,7 +107,7 @@ const ProductForm = () => {
     setImages([...event.target.files])
   }
 
-
+  
 
   const handleVariantChange = (index, event) => {
     const { name, value, type, checked } = event.target

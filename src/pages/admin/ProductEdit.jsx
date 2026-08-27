@@ -62,7 +62,7 @@ const ProductEdit = () => {
     fetchCategories()
   }, [])
 
-  // Get subcategories
+
   useEffect(() => {
     const fetchSubCategories = async () => {
       try {
@@ -83,13 +83,10 @@ const ProductEdit = () => {
     fetchSubCategories()
   }, [])
 
-  // Get the product being edited
   useEffect(() => {
     const fetchProduct = async () => {
       try {
         const productData = await productService.show(productId)
-
-        console.log("Product being edited:", productData)
 
         setFormData({
           name: productData.name || "",
@@ -101,7 +98,6 @@ const ProductEdit = () => {
           in_stock: productData.in_stock,
         })
 
-        // Find the category that belongs to this subcategory
         const subCategoryId =
           productData.sub_category?._id ||
           productData.sub_category
@@ -120,16 +116,17 @@ const ProductEdit = () => {
 
         if (productData.variants) {
           setVariants((previousVariants) =>
-            previousVariants.map((defaultVariant) => {
-              const existingVariant =
-                productData.variants.find(
-                  (variant) =>
-                    variant.size === defaultVariant.size
-                )
+          previousVariants.map((defaultVariant) => {
+            const existingVariant =
+              productData.variants?.find(
+                (variant) =>
+                  variant.size === defaultVariant.size
+              )
 
               if (existingVariant) {
                 return {
                   ...defaultVariant,
+                  _id: existingVariant._id,
                   price: existingVariant.price,
                   inventory: existingVariant.inventory,
                   available: true,
@@ -190,34 +187,62 @@ const ProductEdit = () => {
   )
 
   const handleSubmit = async (event) => {
-    event.preventDefault()
+  event.preventDefault()
 
-    try {
-      const updatedProduct = {
-        ...formData,
+  try {
+    await productService.update(productId, formData)
 
-        variants: variants
-          .filter((variant) => variant.available)
-          .map((variant) => ({
-            size: variant.size,
-            price: variant.price,
-            inventory: variant.inventory,
-          })),
+    for (const variant of variants) {
+        if (variant.available) {
+            const variantData = {
+                size: variant.size,
+                price: variant.price,
+                inventory: variant.inventory,
+            }
+
+        if (variant._id) {
+            const res = await fetch(
+                `${BASE_URL}/products/${productId}/variants/${variant._id}`,
+                {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(variantData),
+                }
+            )
+            
+            if (!res.ok) {
+                throw new Error(
+                    `Failed to update ${variant.size} variant`
+                )
+            }
+        } else {
+            const res = await fetch(
+                `${BASE_URL}/products/${productId}/variants`,
+                {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(variantData),
+                }
+            )
+
+            if (!res.ok) {
+                throw new Error(
+                `Failed to create ${variant.size} variant`
+                )
+            }
+        }
       }
-
-      console.log("Updating product:", updatedProduct)
-
-      await productService.update(
-        productId,
-        updatedProduct
-      )
-
-      navigate(`/admin/products/${productId}`)
-    } catch (err) {
-      console.log(err)
     }
-  }
 
+    navigate(`/admin/products/${productId}`)
+  } catch (err) {
+    console.log(err)
+  }
+}
   return (
     <div className="add-product-page">
 
