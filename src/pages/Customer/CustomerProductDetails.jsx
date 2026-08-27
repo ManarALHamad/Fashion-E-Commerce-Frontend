@@ -43,6 +43,7 @@ const CustomerProductDetails = () => {
       size: selectedVariant.size,
       price: selectedVariant.price,
       quantity: 1,
+      image: product.images?.[0]?.image
     })
 
     navigate(`/cart`)
