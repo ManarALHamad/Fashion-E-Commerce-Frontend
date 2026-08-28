@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router"
 import { index } from "../../services/productService"
+import { Heart } from "lucide-react"
+import * as wishlistService from "../../services/wishlistService"
 
 const BASE_URL = import.meta.env.VITE_BACK_END_SERVER_URL
 
 const ViewProduct = () => {
+
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)
+  const [wishlist, setWishlist] = useState(wishlistService.getWishList())
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -24,24 +28,61 @@ const ViewProduct = () => {
     fetchProducts()
   }, [])
 
+ const handleWishlist = (product) => {
+
+    const isAlreadySaved = wishlist.some(
+      (item) => item._id === product._id
+    )
+
+if (isAlreadySaved) {
+      const updatedWishlist =
+        wishlistService.removeFromWishList(product._id)
+
+      setWishlist(updatedWishlist)
+    } else {
+      const updatedWishlist =
+        wishlistService.addToWishList(product)
+
+      setWishlist(updatedWishlist)
+    }
+  }
+
   if (loading) {
     return <p>Loading products...</p>
   }
 
   return (
     <div className="products-page">
+
       <h1>Shop All Products</h1>
 
       {products.length === 0 ? (
         <p>No products yet.</p>
       ) : (
+
         <div className="product-grid">
-          {products?.map((product) => (
-            <Link
-              to={`/products/${product._id}`}
-              className="product-card"
-              key={product._id}
-            >
+
+        {products.map((product) => {
+
+              const isWishlisted = wishlist.some(
+              (item) => item._id === product._id
+            )
+
+           return(
+
+             <div
+                className="product-card"
+                key={product._id}
+              > 
+
+                <button className="wishlist-button" onClick={() => handleWishlist(product)}>
+
+              <Heart size={22} fill={isWishlisted ? "currentColor" : "none"}  />
+          </button>
+
+          <Link to={`/products/${product._id}`}>
+
+           
               {product.images?.length > 0 ? (
                 <img
                   src={`${BASE_URL}${product.images[0].image}`}
@@ -57,10 +98,16 @@ const ViewProduct = () => {
               {product.variants?.length > 0 && (
                 <p>From {product.variants[0].price} BHD</p>
               )}
-            </Link>
-          ))}
+
+           </Link>
+
+              </div>
+            )
+          })}
+
         </div>
       )}
+
     </div>
   )
 }

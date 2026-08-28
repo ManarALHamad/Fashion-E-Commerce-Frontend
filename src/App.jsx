@@ -10,10 +10,12 @@ import ViewProduct from "./pages/Customer/ViewProduct"
 import * as productService from './services/productService'
 import AdminProducts from "./pages/admin/AdminProducts"
 import ProductDetails from "./pages/admin/ProductDetails"
-import CustomerProductDetails from "./pages/Customer/customerProductDetails"
+import CustomerProductDetails from "./pages/Customer/CustomerProductDetails"
 import ProductEdit from "./pages/admin/ProductEdit"
 import NewCollection from "./pages/Customer/NewCollection"
 import Cart from "./pages/Customer/Cart"
+import WishList from "./pages/Customer/WishList"
+
 
 
 const getUserFromToken = () => {
@@ -56,6 +58,7 @@ const App = () => {
         <Route path="products/:productId" element={<CustomerProductDetails/> } />
         <Route path="/new" element={<NewCollection />} />
         <Route path="/cart" element={<Cart />}/>
+        <Route path="/wishlist" element={<WishList />} />
       </Routes>
       </main>
     </div>
