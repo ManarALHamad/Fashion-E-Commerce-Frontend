@@ -12,6 +12,7 @@ import AdminProducts from "./pages/admin/AdminProducts"
 import ProductDetails from "./pages/admin/ProductDetails"
 import CustomerProductDetails from "./pages/Customer/customerProductDetails"
 import ProductEdit from "./pages/admin/ProductEdit"
+import NewCollection from "./pages/Customer/NewCollection"
 import Cart from "./pages/Customer/Cart"
 
 
@@ -52,7 +53,8 @@ const App = () => {
         <Route path="/admin/products" element={<AdminProducts />} />
         <Route path="/admin/products/:productId" element={<ProductDetails />} />
         <Route path="/products" element={<ViewProduct />} />
-        <Route path="/products/:productId" element={<CustomerProductDetails/> } />
+        <Route path="products/:productId" element={<CustomerProductDetails/> } />
+        <Route path="/new" element={<NewCollection />} />
         <Route path="/cart" element={<Cart />}/>
       </Routes>
       </main>
