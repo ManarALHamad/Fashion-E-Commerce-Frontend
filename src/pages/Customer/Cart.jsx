@@ -34,7 +34,8 @@ const Cart = () => {
       </div>
     )
   }
-
+console.log("CART:", cart)
+console.log("TOTAL PRICE:", totalPrice)
 
   return (
     <div>
@@ -65,7 +66,7 @@ const Cart = () => {
 
 
           <p>
-            Price: {item.price} BHD
+            Price: {(Number(item.price) *item.quantity).toFixed(3)} BHD
           </p>
 
 
