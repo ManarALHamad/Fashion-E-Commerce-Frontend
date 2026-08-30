@@ -29,7 +29,7 @@ setLoading(false)
 
 fetchData()}, [])
 
-if (loading) return <p>Loading...</p>
+if (loading) return <div className="loader-container"><span className="loader"></span></div>
 if (products.length === 0) return <p>No products in this collection yet.</p>
 
 return (
