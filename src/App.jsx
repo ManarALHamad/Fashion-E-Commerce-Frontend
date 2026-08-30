@@ -16,7 +16,7 @@ import NewCollection from "./pages/Customer/NewCollection"
 import Cart from "./pages/Customer/Cart"
 import WishList from "./pages/Customer/WishList"
 import RamadanCollection from "./pages/Customer/RamadanCollection"
-
+import EidFitrCollection from "./pages/Customer/EidFitrCollection"
 
 
 const getUserFromToken = () => {
@@ -61,6 +61,7 @@ const App = () => {
         <Route path="/cart" element={<Cart />}/>
         <Route path="/wishlist" element={<WishList />} />
         <Route path="/ramadan" element={<RamadanCollection />} />
+        <Route path="/eid_fitr" element={<EidFitrCollection/>} />
       </Routes>
       </main>
     </div>
