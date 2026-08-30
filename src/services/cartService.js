@@ -55,4 +55,18 @@ const removeFromCart = (variantId) => {
   return updatedCart
 }
 
-export { getCart, addToCart, removeFromCart}
+const clearCart = () => {
+   
+  localStorage.removeItem("cart")
+  return[]
+
+}
+
+
+
+export { 
+  getCart, 
+  addToCart, 
+  removeFromCart,
+  clearCart,
+}

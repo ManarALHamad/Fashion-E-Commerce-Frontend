@@ -1,12 +1,18 @@
 import { useState } from "react"
-import { Link } from "react-router"
+import { Link, useNavigate } from "react-router"
 import { getCart, removeFromCart, addToCart } from "../../services/cartService"
 import { Trash2, Plus, Minus } from 'lucide-react';
+import Checkout from "./Checkout"
+
+
+
 
 const BASE_URL = import.meta.env.VITE_BACK_END_SERVER_URL
 
 const Cart = () => {
 
+  const navigate = useNavigate()
+  
   const [cart, setCart] = useState(getCart())
 
   const handleRemove = (variantId) => {
@@ -16,6 +22,19 @@ const Cart = () => {
   const handleAdd = (item) => {
     const updatedCart = addToCart(item)
     setCart(updatedCart)
+  }
+
+  const handleCheckout = () => {
+
+    const token = localStorage.getItem("token")
+
+    if(!token) {
+
+      naviage ("auth/sign-in", { state: { from: "/checkout" } })
+      return
+    }
+
+    navigate("/checkout")
   }
 
 
@@ -34,8 +53,7 @@ const Cart = () => {
       </div>
     )
   }
-console.log("CART:", cart)
-console.log("TOTAL PRICE:", totalPrice)
+
 
   return (
     <div>
@@ -74,17 +92,17 @@ console.log("TOTAL PRICE:", totalPrice)
             Quantity: 
             {item.quantity === 1 ? (
               <button onClick={() => handleRemove(item.variantId)}>
-                <Trash2 />
+                <Trash2 size={21} strokeWidth={1.6}/>
               </button>
               ) : (
               <button onClick={() => handleRemove(item.variantId)}>
-                <Minus />
+                <Minus size={21} strokeWidth={1.6}/>
               </button>
             )}
 
             <span>{item.quantity}</span>
             <button onClick={() => handleAdd(item)}>
-              <Plus />
+              <Plus size={21} strokeWidth={1.6}/>
             </button>
           </p>
 
@@ -97,6 +115,11 @@ console.log("TOTAL PRICE:", totalPrice)
       <h2>
         Cart Total: {totalPrice.toFixed(3)} BHD
       </h2>
+
+      <button onClick={handleCheckout}>
+      Proceed to Checkout
+
+      </button>
 
     </div>
   )
