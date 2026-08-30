@@ -18,6 +18,7 @@ import WishList from "./pages/Customer/WishList"
 import RamadanCollection from "./pages/Customer/RamadanCollection"
 import EidFitrCollection from "./pages/Customer/EidFitrCollection"
 import WinterCollection from "./pages/Customer/WinterCollection"
+import EidAdhaCollection from "./pages/Customer/EidAdha"
 
 const getUserFromToken = () => {
   const token = localStorage.getItem('token')
@@ -63,6 +64,7 @@ const App = () => {
         <Route path="/ramadan" element={<RamadanCollection />} />
         <Route path="/eid_fitr" element={<EidFitrCollection/>} />
         <Route path="winter" element={<WinterCollection/>}/>
+        <Route path="/eid_adha" element={ <EidAdhaCollection/> } />
       </Routes>
       </main>
     </div>
