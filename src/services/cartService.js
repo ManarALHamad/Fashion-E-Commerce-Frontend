@@ -11,6 +11,7 @@ const addToCart = (item) => {
   )
   if (existingItem) {
     existingItem.quantity += 1
+    
   } else {
     cart.push(item)
   }
