@@ -9,14 +9,20 @@ import {
 } from "lucide-react"
 
 import logo from "../assets/images/logo.png"
-
 import ViewProduct from "./Customer/ViewProduct"
+import { getCart } from "../services/cartService"
 
 
 const Home = () => {
 
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
+
+    const [cart, setCart] = useState(getCart())
+
+    const cartCount = cart.reduce((total, item) => {
+      return total + item.quantity
+    }, 0)
 
     useEffect (() => {
 
@@ -78,7 +84,7 @@ const Home = () => {
 
           <Link to="/cart" className="cart-icon">
             <ShoppingBag size={21} strokeWidth={1.6} />
-            <span className="cart-count">2</span>
+            <span className="cart-count">{cartCount}</span>
           </Link>
         </div>
 
