@@ -92,17 +92,17 @@ const Cart = () => {
             Quantity: 
             {item.quantity === 1 ? (
               <button onClick={() => handleRemove(item.variantId)}>
-                <Trash2 />
+                <Trash2 size={21} strokeWidth={1.6}/>
               </button>
               ) : (
               <button onClick={() => handleRemove(item.variantId)}>
-                <Minus />
+                <Minus size={21} strokeWidth={1.6}/>
               </button>
             )}
 
             <span>{item.quantity}</span>
             <button onClick={() => handleAdd(item)}>
-              <Plus />
+              <Plus size={21} strokeWidth={1.6}/>
             </button>
           </p>
 
