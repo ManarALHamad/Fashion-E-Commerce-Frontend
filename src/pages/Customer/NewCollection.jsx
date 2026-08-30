@@ -14,7 +14,7 @@ const fetchData = async () => {
 const subcategories = await indexSubcategories()
 const allProducts = await indexProducts()
     
-const newSubcategory = subcategories.find((subcategories) => subcategories.name === "new")
+const newSubcategory = subcategories.find((subcategories) => subcategories.name === "New Collection")
 
 if (newSubcategory) {
 const filtered = allProducts.filter(

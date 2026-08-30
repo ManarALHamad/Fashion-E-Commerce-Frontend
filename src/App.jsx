@@ -18,6 +18,9 @@ import WishList from "./pages/Customer/WishList"
 import RamadanCollection from "./pages/Customer/RamadanCollection"
 import EidFitrCollection from "./pages/Customer/EidFitrCollection"
 import WinterCollection from "./pages/Customer/WinterCollection"
+import Checkout from "./pages/Customer/Checkout"
+
+
 
 const getUserFromToken = () => {
   const token = localStorage.getItem('token')
@@ -62,12 +65,12 @@ const App = () => {
         <Route path="/wishlist" element={<WishList />} />
         <Route path="/ramadan" element={<RamadanCollection />} />
         <Route path="/eid_fitr" element={<EidFitrCollection/>} />
-        <Route path="winter" element={<WinterCollection/>}/>
+        <Route path="/winter" element={<WinterCollection />}/>
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
       </main>
     </div>
-  )
-  // merge check
+  ) 
 }
 
 export default App
