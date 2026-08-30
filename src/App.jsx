@@ -19,6 +19,8 @@ import RamadanCollection from "./pages/Customer/RamadanCollection"
 import EidFitrCollection from "./pages/Customer/EidFitrCollection"
 import WinterCollection from "./pages/Customer/WinterCollection"
 import Checkout from "./pages/Customer/Checkout"
+import Contact from "./pages/Contact"
+import AboutUs from "./pages/About"
 
 
 
@@ -67,6 +69,8 @@ const App = () => {
         <Route path="/eid_fitr" element={<EidFitrCollection/>} />
         <Route path="/winter" element={<WinterCollection />}/>
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/about_us" element={<AboutUs/>}/>
+        <Route path="/contact" element={<Contact/>}></Route>
       </Routes>
       </main>
     </div>
