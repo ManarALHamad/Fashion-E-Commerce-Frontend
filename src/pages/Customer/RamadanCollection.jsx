@@ -5,7 +5,7 @@ import { Link } from "react-router"
 
 const BASE_URL = import.meta.env.VITE_BACK_END_SERVER_URL
 
-const NewCollection = () => {
+const RamadanCollection = () => {
 const [loading, setLoading] = useState(true)
 const [products, setProducts] = useState([])
 
@@ -14,11 +14,11 @@ const fetchData = async () => {
 const subcategories = await indexSubcategories()
 const allProducts = await indexProducts()
     
-const newSubcategory = subcategories.find((subcategories) => subcategories.name === "new")
+const ramadanSubcategory = subcategories.find((subcategories) => subcategories.name === "ramadan")
 
-if (newSubcategory) {
+if (ramadanSubcategory) {
 const filtered = allProducts.filter(
-(product) => String(product.sub_category) === String(newSubcategory._id)
+(product) => String(product.sub_category) === String(ramadanSubcategory._id)
 )
  setProducts(filtered)
 }
@@ -34,7 +34,7 @@ if (products.length === 0) return <p>No products in this collection yet.</p>
 
 return (
 <div className="products-page">
-<h1>New Collection</h1>
+<h1>Ramadan Collection</h1>
 <div className="product-grid">
  {products.map((product) => (
  <Link to={`/products/${product._id}`} className="product-card" key={product._id}>
@@ -53,4 +53,4 @@ return (
 )
 }
 
-export default NewCollection
+export default RamadanCollection
