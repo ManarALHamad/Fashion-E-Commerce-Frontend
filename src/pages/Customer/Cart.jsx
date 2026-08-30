@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Link, useNavigate } from "react-router"
 import { getCart, removeFromCart, addToCart } from "../../services/cartService"
 import { Trash2, Plus, Minus } from 'lucide-react';
-import Checkout from "./Checkout"
+// import Checkout from "./Checkout"
 
 
 
@@ -12,7 +12,7 @@ const BASE_URL = import.meta.env.VITE_BACK_END_SERVER_URL
 const Cart = () => {
 
   const navigate = useNavigate()
-  
+
   const [cart, setCart] = useState(getCart())
 
   const handleRemove = (variantId) => {
@@ -30,7 +30,7 @@ const Cart = () => {
 
     if(!token) {
 
-      naviage ("auth/sign-in", { state: { from: "/checkout" } })
+      navigate("/auth/sign-in", { state: { from: "/checkout" } })
       return
     }
 
