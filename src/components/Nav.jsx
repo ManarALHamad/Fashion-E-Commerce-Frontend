@@ -4,6 +4,8 @@ import {
   UserRound,
   Heart,
   ShoppingBag,
+  ChevronDown,
+  ChevronUp,
 } from "lucide-react"
 
 import { getCart } from "../services/cartService"
@@ -31,7 +33,7 @@ const Nav = (props) => {
         <nav className="navBar">
             <Link className="nav-brand" to="/"><img src="/src/assets/images/logo.png" alt="Ndesigns" className="logo-img" /></Link>
             <div className="nav-dropdown">
-                <button className="nav-dropdown-title" onClick={() => setCollectionsOpen(!collectionsOpen)}>Collections</button>
+                <button className="nav-dropdown-title" onClick={() => setCollectionsOpen(!collectionsOpen)}>{collectionsOpen ? (<>Collections <ChevronUp size={14} strokeWidth={2}/></>):(<>Collections <ChevronDown size={14} strokeWidth={2}/></>)}</button>
                 {collectionsOpen ? (
           <ul className="nav-dropdown-menu">
             <li>
@@ -43,7 +45,7 @@ const Nav = (props) => {
             </li>
 
             <li>
-              <Link to="/eid-fitr">Eid Al Fitr Collection</Link>
+              <Link to="/eid_fitr">Eid Al Fitr Collection</Link>
             </li>
 
             <li>
@@ -51,7 +53,7 @@ const Nav = (props) => {
             </li>
 
             <li>
-              <Link to="/eid-adha">Eid Al Adha Collection</Link>
+              <Link to="/eid_adha">Eid Al Adha Collection</Link>
             </li>
           </ul>
         ): false}
