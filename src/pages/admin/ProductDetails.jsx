@@ -53,7 +53,7 @@ const ProductDetails = () => {
   }
 
   if (loading) {
-    return <p>Loading product...</p>
+    return <div className="loader-container"><span className="loader"></span></div>
   }
 
   if (!product) {

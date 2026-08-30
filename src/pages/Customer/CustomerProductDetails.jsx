@@ -49,7 +49,7 @@ const CustomerProductDetails = () => {
     navigate(`/cart`)
   }
 
-  if (loading) return <p>Loading product...</p>
+  if (loading) return <div className="loader-container"><span className="loader"></span></div>
   if (!product) return <p>Product not found.</p>
 
   return (
