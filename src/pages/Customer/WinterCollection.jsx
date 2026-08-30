@@ -34,7 +34,7 @@ if (products.length === 0) return <p>No products in this collection yet.</p>
 
 return (
 <div className="products-page">
-<h1>winter Collection</h1>
+<h1>Winter Collection</h1>
 <div className="product-grid">
  {products.map((product) => (
  <Link to={`/products/${product._id}`} className="product-card" key={product._id}>
