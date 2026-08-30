@@ -52,11 +52,6 @@ const Home = () => {
 
       <header className="navbar">
 
-   
-        
-        <Link to="/" className="logo">
-          <img src={logo} alt="Ndesigns" className="logo-img" />
-        </Link>
 
        
         <nav className="nav-links">
@@ -74,18 +69,7 @@ const Home = () => {
             <Search size={21} strokeWidth={1.6} />
           </button>
 
-          <Link to="/profile">
-            <UserRound size={21} strokeWidth={1.6} />
-          </Link>
 
-          <Link to="/wishlist">
-            <Heart size={21} strokeWidth={1.6} />
-          </Link>
-
-          <Link to="/cart" className="cart-icon">
-            <ShoppingBag size={21} strokeWidth={1.6} />
-            <span className="cart-count">{cartCount}</span>
-          </Link>
         </div>
 
       </header>
