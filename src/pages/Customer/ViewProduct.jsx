@@ -48,7 +48,7 @@ if (isAlreadySaved) {
   }
 
   if (loading) {
-    return <p>Loading products...</p>
+    return <div className="loader-container"><span className="loader"></span></div>
   }
 
   return (
