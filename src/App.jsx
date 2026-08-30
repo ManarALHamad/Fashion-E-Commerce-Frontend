@@ -62,8 +62,7 @@ const App = () => {
       </Routes>
       </main>
     </div>
-  )
-  // merge check
+  ) 
 }
 
 export default App

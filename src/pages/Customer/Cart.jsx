@@ -34,8 +34,7 @@ const Cart = () => {
       </div>
     )
   }
-console.log("CART:", cart)
-console.log("TOTAL PRICE:", totalPrice)
+
 
   return (
     <div>
