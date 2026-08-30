@@ -5,7 +5,7 @@ import { Link } from "react-router"
 
 const BASE_URL = import.meta.env.VITE_BACK_END_SERVER_URL
 
-const WinterCollection = () => {
+const EidAdhaCollection = () => {
 const [loading, setLoading] = useState(true)
 const [products, setProducts] = useState([])
 
@@ -14,11 +14,11 @@ const fetchData = async () => {
 const subcategories = await indexSubcategories()
 const allProducts = await indexProducts()
     
-const winterSubcategory = subcategories.find((subcategories) => subcategories.name === "winter")
+const eidAdhaSubcategory = subcategories.find((subcategories) => subcategories.name === "eid_adha")
 
-if (winterSubcategory) {
+if (eidAdhaSubcategory) {
 const filtered = allProducts.filter(
-(product) => String(product.sub_category) === String(winterSubcategory._id)
+(product) => String(product.sub_category) === String(eidAdhaSubcategory._id)
 )
  setProducts(filtered)
 }
@@ -34,7 +34,7 @@ if (products.length === 0) return <p>No products in this collection yet.</p>
 
 return (
 <div className="products-page">
-<h1>Winter Collection</h1>
+<h1>Eid Al Adha Collection</h1>
 <div className="product-grid">
  {products.map((product) => (
  <Link to={`/products/${product._id}`} className="product-card" key={product._id}>
@@ -53,4 +53,4 @@ return (
 )
 }
 
-export default WinterCollection
+export default EidAdhaCollection
