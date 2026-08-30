@@ -18,6 +18,7 @@ import WishList from "./pages/Customer/WishList"
 import RamadanCollection from "./pages/Customer/RamadanCollection"
 import EidFitrCollection from "./pages/Customer/EidFitrCollection"
 import WinterCollection from "./pages/Customer/WinterCollection"
+import EidAdhaCollection from "./pages/Customer/EidAdha"
 import Checkout from "./pages/Customer/Checkout"
 import Contact from "./pages/Contact"
 import AboutUs from "./pages/About"
@@ -67,7 +68,8 @@ const App = () => {
         <Route path="/wishlist" element={<WishList />} />
         <Route path="/ramadan" element={<RamadanCollection />} />
         <Route path="/eid_fitr" element={<EidFitrCollection/>} />
-        <Route path="/winter" element={<WinterCollection />}/>
+        <Route path="/winter" element={<WinterCollection/>}/>
+        <Route path="/eid_adha" element={ <EidAdhaCollection/> } />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/about_us" element={<AboutUs/>}/>
         <Route path="/contact" element={<Contact/>}></Route>
