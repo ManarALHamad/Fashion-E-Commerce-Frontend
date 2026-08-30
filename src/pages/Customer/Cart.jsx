@@ -18,6 +18,19 @@ const Cart = () => {
     setCart(updatedCart)
   }
 
+  const handleCheckout = () => {
+
+    const token = localStorage.getItem("token")
+
+    if(!token) {
+
+      naviage ("auth/sign-in", { state: { from: "/checkout" } })
+      return
+    }
+
+    navigate("/checkout")
+  }
+
 
 
   const totalPrice = cart.reduce((total, item) => {
@@ -96,6 +109,11 @@ const Cart = () => {
       <h2>
         Cart Total: {totalPrice.toFixed(3)} BHD
       </h2>
+
+      <button onClick={handleCheckout}>
+      Proceed to Checkout
+
+      </button>
 
     </div>
   )
