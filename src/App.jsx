@@ -15,6 +15,7 @@ import ProductEdit from "./pages/admin/ProductEdit"
 import NewCollection from "./pages/Customer/NewCollection"
 import Cart from "./pages/Customer/Cart"
 import WishList from "./pages/Customer/WishList"
+import RamadanCollection from "./pages/Customer/RamadanCollection"
 
 
 
@@ -59,6 +60,7 @@ const App = () => {
         <Route path="/new" element={<NewCollection />} />
         <Route path="/cart" element={<Cart />}/>
         <Route path="/wishlist" element={<WishList />} />
+        <Route path="/ramadan" element={<RamadanCollection />} />
       </Routes>
       </main>
     </div>
