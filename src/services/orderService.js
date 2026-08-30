@@ -1,5 +1,5 @@
-const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}`
-
+const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/orders`
+console.log("BASE_URL:", BASE_URL)
 const create = async (orderFormData) => {
     try {
         const res = await fetch(BASE_URL, {

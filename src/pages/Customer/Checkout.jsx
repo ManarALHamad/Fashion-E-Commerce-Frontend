@@ -8,6 +8,7 @@ const Checkout = () => {
     const navigate = useNavigate()
     const [cart] = useState(getCart())
     const [submitting, setSubmitting] = useState(false)
+    const [error, setError] = useState("")
 
     const [formData, setFormData] = useState({
 
@@ -18,6 +19,10 @@ const Checkout = () => {
         payment_method: "cod",
     })
 
+    const totalPrice = cart.reduce((total, item) => {
+        return total + Number(item.price) * item.quantity
+    }, 0)
+
      const handleChange = (event) => {
       setFormData({ ...formData, [event.target.name]: event.target.value })
      }
@@ -25,8 +30,9 @@ const Checkout = () => {
      const handleSubmit = async (event) =>{
 
         event.preventDefault()
+        setError("")
         setSubmitting(true)
-     }
+     
 
      const items = cart.map((item) => ({
         product: item.productId,
@@ -36,6 +42,7 @@ const Checkout = () => {
      }))
 
       try {
+
       const order = await create({ ...formData, items })
 
       if (order?.err) {
@@ -44,14 +51,22 @@ const Checkout = () => {
       }
 
       clearCart()
+
       navigate("/order-confirmation", { state: { order } })
-    } catch (err) {
+    } 
+    
+    
+    catch (err) {
+
       console.log(err)
+
       setError("Something went wrong placing your order. Please try again.")
+
     } finally {
       setSubmitting(false)
     }
   }
+
     if (cart.length === 0) {
     return (
       <div>
@@ -90,22 +105,25 @@ const Checkout = () => {
 
         <label>Payment Method</label>
 
-        <selec id="payment_method" name="payment_method" value={formData.payment_method} onChange={handleChange}>
+        <select id="payment_method" name="payment_method" value={formData.payment_method} onChange={handleChange}>
+
+        <option value="cod">Cash on Delivery</option>
+        <option value="online">Online Payment</option>
 
 
         </select>
 
-        
+        <h2>Order Total: {totalPrice.toFixed(3)} BHD</h2>
 
+        {error && <p className="error-message">{error}</p>}
 
+           <button type="submit" disabled={submitting}>
+          Submit
+        </button>
 
-
-
+    
      </form>
      </div>
-
-
-
 
      )
 
