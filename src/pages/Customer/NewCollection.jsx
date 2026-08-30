@@ -22,7 +22,7 @@ const filtered = allProducts.filter(
 )
  setProducts(filtered)
 }
-
+// helo
 
 setLoading(false)
 }
