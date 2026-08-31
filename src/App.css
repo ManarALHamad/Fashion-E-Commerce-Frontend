@@ -759,3 +759,17 @@ h2 {
 .nav-dropdown-menu a:hover {
   background-color: #e9e5de;
 }
+
+.aboutUsHeader{
+  background-color: #19341A;
+}
+
+@font-face {
+  font-family: "Queensides";
+  src: url("/src/assets/fonts/queensidesmedium-x30zv.ttf") format("truetype");
+  font-weight: 300;
+}
+
+.aboutUsP{
+    font-family: "Queensides", sans-serif;
+}
