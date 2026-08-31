@@ -70,6 +70,9 @@ const Nav = (props) => {
                         <Link to="/contact">Contact</Link>
                     </li>
                     <li>
+                        <Link to="/profile"><UserRound size={21} strokeWidth={1.6}/></Link>
+                    </li>
+                    <li>
                         <Link to="/wishlist"><Heart size={21} strokeWidth={1.6}/></Link>
                     </li>
                     <li>
