@@ -23,14 +23,20 @@ import Checkout from "./pages/Customer/Checkout"
 import Contact from "./pages/Contact"
 import AboutUs from "./pages/About"
 import AdminOrders from "./pages/admin/AdminOrders"
+import Profile from "./pages/Customer/Profile"
+
 
 const getUserFromToken = () => {
+
   const token = localStorage.getItem('token')
+
   if (!token) return null
+
   return JSON.parse(atob(token.split('.')[1])).payload
 }
 
 const App = () => {
+  
   const navigate = useNavigate()
 
   const [user, setUser] = useState(getUserFromToken())
@@ -71,9 +77,11 @@ const App = () => {
         <Route path="/eid_adha" element={ <EidAdhaCollection/> } />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/admin/orders" element={<AdminOrders />} />
-
+        
         <Route path="/about_us" element={<AboutUs/>}/>
-        <Route path="/contact" element={<Contact/>}></Route>
+        <Route path="/contact" element={<Contact/>} />
+        <Route path="/profile" element={<Profile user={user} />}  />
+
       </Routes>
       </main>
     </div>
