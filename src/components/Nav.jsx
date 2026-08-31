@@ -29,7 +29,6 @@ const Nav = (props) => {
     return (
     <>
         <header className="header"> <span>ndesigns stitched with elegance</span></header>
-
         <nav className="navBar">
             <Link className="nav-brand" to="/"><img src="/src/assets/images/logo.png" alt="Ndesigns" className="logo-img" /></Link>
             <div className="nav-dropdown">
@@ -65,14 +64,13 @@ const Nav = (props) => {
     
                 <div className="nav-icons">
                     <li>
-                        <Link to="/about-us">About Us</Link>
+                        <Link to="/about_us">About Us</Link>
                     </li>
                     <li>
                         <Link to="/contact">Contact</Link>
                     </li>
-
                     <li>
-                        <Link to="/"><UserRound size={21} strokeWidth={1.6}/></Link>
+                        <Link to="/profile"><UserRound size={21} strokeWidth={1.6}/></Link>
                     </li>
                     <li>
                         <Link to="/wishlist"><Heart size={21} strokeWidth={1.6}/></Link>
@@ -90,7 +88,7 @@ const Nav = (props) => {
             <ul className="nav-list">
                 <div className="nav-icons">
                     <li>
-                        <Link to="/about-us">About Us</Link>
+                        <Link to="/about_us">About Us</Link>
                     </li>
                     <li>
                         <Link to="/contact">Contact</Link>
