@@ -21,6 +21,10 @@ import WinterCollection from "./pages/Customer/WinterCollection"
 import EidAdhaCollection from "./pages/Customer/EidAdha"
 import Checkout from "./pages/Customer/Checkout"
 import AdminOrders from "./pages/admin/AdminOrders"
+import Profile from "./pages/Customer/Profile"
+
+
+
 
 const getUserFromToken = () => {
   const token = localStorage.getItem('token')
@@ -69,6 +73,7 @@ const App = () => {
         <Route path="/eid_adha" element={ <EidAdhaCollection/> } />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/admin/orders" element={<AdminOrders />} />
+        <Route path="/profile" element={<Profile />} />
 
       </Routes>
       </main>
