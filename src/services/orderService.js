@@ -1,53 +1,89 @@
-// const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/orders`
+const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/orders`
 
 
+const create = async (orderFormData) => {
+  
+        const res = await fetch(BASE_URL, {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(orderFormData),
+        })
+         const data = await res.json()
 
-// const create = async (orderFormData) => {
-//     try {
-//         const res = await fetch(BASE_URL, {
-//             method: 'POST',
-//             headers: {
-//                 Authorization: `Bearer ${localStorage.getItem('token')}`,
-//                 'Content-Type': 'application/json',
-//             },
-//             body: JSON.stringify(orderFormData),
-//         })
-//         return res.json()
-//     } catch (error) {
-//         console.log(error)
-//     }
-// }
+    if (!res.ok) {
+    throw new Error(JSON.stringify(data))
+  }
 
-// //customers viewing their orders 
+  return data
+    } 
 
-// const indexMine = async () => {
+//customers viewing their orders 
 
-//     try {
-//         const res = await fetch (`${BASE_URL}/mine`, {
-//             headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}
+const indexMine = async () => {
 
-//         })
-//         return res.json()
+    
+        const res = await fetch (`${BASE_URL}/mine`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
 
-//     } catch (error) {
-//         console.log(error)
-//     }
-// }
+        })  
+        if (!res.ok) {
+    throw new Error("Failed to get orders")
+     }
+        return res.json()
+ 
+}
 
-// //admin views all orders 
+//admin views all orders 
 
-// const indexAll = async () => {
-//     try {
-//         const res = await fetch(`${BASE_URL}/all`, {
-//             headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-//         })
-//         return res.json()
-//     } catch (error) {
-//         console.log(error)
-//     }
-// }
-// export {
-//   create,
-//   indexMine,
-//   indexAll,
-// }
+const indexAll = async () => {
+  try {
+    const res = await fetch(`${BASE_URL}/all`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
+
+    const data = await res.json()
+
+    console.log("INDEX ALL RESPONSE:", data)
+
+    if (!res.ok) {
+      throw new Error(JSON.stringify(data))
+    }
+
+    return data
+  } catch (error) {
+    console.log("INDEX ALL ERROR:", error)
+    throw error
+  }
+}
+
+const deleteOrder = async (orderId) => {
+  const res = await fetch(`${BASE_URL}/${orderId}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  })
+
+  const data = await res.json()
+
+  if (!res.ok) {
+    throw new Error(JSON.stringify(data))
+  }
+
+  return data
+}
+
+
+export {
+  create,
+  indexMine,
+  indexAll,
+  deleteOrder,
+}
