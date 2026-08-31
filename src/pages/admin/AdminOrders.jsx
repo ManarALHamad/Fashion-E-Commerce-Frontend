@@ -64,7 +64,7 @@ const AdminOrders = () => {
           <thead>
             <tr>
               <th>Order</th>
-              <th>Customer</th>
+              <th>Customer</th> 
               <th>Email</th>
               <th>Phone</th>
               <th>Address</th>
