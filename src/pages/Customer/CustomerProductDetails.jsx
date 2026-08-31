@@ -46,7 +46,7 @@ const CustomerProductDetails = () => {
       image: product.images?.[0]?.image
     })
 
-    navigate(`/cart`)
+   
   }
 
   if (loading) return <div className="loader-container"><span className="loader"></span></div>
@@ -98,7 +98,7 @@ const CustomerProductDetails = () => {
 
         {product.variants?.length > 0 ? (
           product.variants.map((variant) => (
-            <button
+            <button 
               key={variant._id}
               disabled={variant.inventory === 0}
               className={
