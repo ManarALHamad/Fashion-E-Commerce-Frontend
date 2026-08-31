@@ -4,131 +4,128 @@ import { getCart, clearCart } from "../../services/cartService"
 import { create } from "../../services/orderService"
 
 const Checkout = () => {
+  const navigate = useNavigate()
 
-    const navigate = useNavigate()
-    const [cart] = useState(getCart())
-    const [submitting, setSubmitting] = useState(false)
-    const [error, setError] = useState("")
+  const [cart] = useState(getCart())
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState("")
+  const [success, setSuccess] = useState("")
 
-    const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState({
 
-        customer_name: "",
-        customer_email: "",
-        customer_phone: "",
-        delivery_address: "",
-        payment_method: "cod",
+    customer_name: "",
+    customer_email: "",
+    customer_phone: "",
+    delivery_address: "",
+    payment_method: "cod",
+
+  })
+
+  const totalPrice = cart.reduce((total, item) => {
+    return total + Number(item.price) * item.quantity
+  }, 0)
+
+  const handleChange = (event) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
     })
+  }
 
-    const totalPrice = cart.reduce((total, item) => {
-        return total + Number(item.price) * item.quantity
-    }, 0)
+  const handleSubmit = async (event) => {
+    event.preventDefault()
 
-     const handleChange = (event) => {
-      setFormData({ ...formData, [event.target.name]: event.target.value })
-     }
+    setError("")
+    setSubmitting(true)
 
-     const handleSubmit = async (event) =>{
+    const items = cart.map((item) => ({
 
-        event.preventDefault()
-        setError("")
-        setSubmitting(true)
-     
+      product: item.productId,
+      variant: item.variantId,
+      quantity: item.quantity,
+      unit_price: item.price,
 
-     const items = cart.map((item) => ({
-        product: item.productId,
-        variant: item.variantId,
-        quantity: item.quantity,
-        unit_price: item.price,
-     }))
+    }))
 
-      try {
+    const orderData = {
+      ...formData,
+      items,
+    }
 
-      const order = await create({ ...formData, items })
+    try {
 
-      if (order?.err) {
-        setError(order.err)
-        return
-      }
+      const order = await create(orderData)
 
       clearCart()
 
-      navigate("/order-confirmation", { state: { order } })
+      setSuccess("Order submitted successfully!")
+
+    //   navigate("/products")
     } 
-    
-    
-    catch (err) {
+    catch (error) {
 
-      console.log(err)
+      console.log(error)
+      
+      setError("Failed to submit order.")
+    } 
 
-      setError("Something went wrong placing your order. Please try again.")
+    finally {
 
-    } finally {
       setSubmitting(false)
+
     }
+
   }
 
-    if (cart.length === 0) {
-    return (
-      <div>
-        <h1>Checkout</h1>
-        <p>Your cart is empty.</p>
-      </div>
-    )
-  }
+  return (
+    <div className="checkout-page">
 
-
-
-    
-     return (
-
-       
-          <div>
       <h1>Checkout</h1>
 
       <form onSubmit={handleSubmit}>
 
-        <label>Full Name:</label>
+        <label>Name</label>
 
-        <input type="text" id="customer_name" name="customer_name" value={formData.customer_name}  onChange={handleChange} required />
+        <input type="text" name="customer_name" value={formData.customer_name} onChange={handleChange} required />
 
-        <label>Email:</label>
+        <label>Email</label>
 
-        <input type="email" id="customer_email" name="customer_email" value={formData.customer_email} onChange={handleChange} required />
+        <input type="email" name="customer_email" value={formData.customer_email} onChange={handleChange} required />
+       
+        <label>Phone</label>
 
-        <label>Phone:</label>
-
-        <input type="tel" id="customer_phone" name="customer_phone" value={formData.customer_phone} onChange={handleChange} required />
-
+        <input type="text" name="customer_phone" value={formData.customer_phone}  onChange={handleChange} required />
+   
         <label>Delivery Address</label>
 
-        <textarea id="delivery_address" name="delivery_address" value={formData.delivery_address} onChange={handleChange} required />
-
+        <textarea name="delivery_address" value={formData.delivery_address} onChange={handleChange} required />
+     
         <label>Payment Method</label>
 
-        <select id="payment_method" name="payment_method" value={formData.payment_method} onChange={handleChange}>
-
-        <option value="cod">Cash on Delivery</option>
-        <option value="online">Online Payment</option>
-
-
+        <select name="payment_method" value={formData.payment_method} onChange={handleChange} >
+      
+          <option value="cod">Cash on Delivery</option>
+          <option value="online">Online Payment</option>
         </select>
 
-        <h2>Order Total: {totalPrice.toFixed(3)} BHD</h2>
+        <h2>
+          Total: {totalPrice.toFixed(3)} BHD
+        </h2>
 
-        {error && <p className="error-message">{error}</p>}
+        {error && <p>{error}</p>}
 
-           <button type="submit" disabled={submitting}>
-          Submit
+        {success && (<p className="order-success">
+            Order submitted successfully!💃🏻
+        </p>)}
+
+        <button type="submit" disabled={submitting || cart.length === 0}>
+          {submitting ? "Placing Order..." : "Place Order"}
         </button>
 
-    
-     </form>
-     </div>
+      </form>
 
-     )
-
-
-
-
+    </div>
+  )
 }
+
 export default Checkout
