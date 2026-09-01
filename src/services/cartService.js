@@ -1,4 +1,5 @@
 const getCart = () => {
+    console.log('getting cart')
   const savedCart = localStorage.getItem("cart")
   return savedCart ? JSON.parse(savedCart) : []
 }

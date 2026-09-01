@@ -44,7 +44,7 @@ const Checkout = () => {
       variant: item.variantId,
       quantity: item.quantity,
       unit_price: item.price,
-
+      
     }))
 
     const orderData = {
@@ -121,8 +121,10 @@ const Checkout = () => {
   {error && <p className="error-msg">{error}</p>}
 
   {success && (<p className="order-success">
-    Order submitted successfully!:dancer::skin-tone-2:
-</p>)}
+    Order submitted successfully!
+</p>
+
+)}
 
 <div className="footer">
   <h2 className="price">

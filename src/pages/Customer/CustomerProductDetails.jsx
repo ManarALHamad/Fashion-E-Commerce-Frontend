@@ -5,7 +5,7 @@ import { addToCart } from "../../services/cartService"
 
 const BASE_URL = import.meta.env.VITE_BACK_END_SERVER_URL
 
-const CustomerProductDetails = () => {
+const CustomerProductDetails = (props) => {
   const { productId } = useParams()
   const navigate = useNavigate()
 
@@ -46,7 +46,7 @@ const CustomerProductDetails = () => {
       image: product.images?.[0]?.image
     })
 
-   
+   props.setUpdateCart(!props.updateCart)
   }
 
   if (loading) return <div className="loader-container"><span className="loader"></span></div>
