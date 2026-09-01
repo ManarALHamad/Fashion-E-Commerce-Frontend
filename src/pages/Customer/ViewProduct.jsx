@@ -59,27 +59,27 @@ if (isAlreadySaved) {
 
      products.filter((product) => product.category === category):products
 
-  
-
-
-
-
-
-
+  const categoryTitles = {
+  abayas: "Abayas",
+  dresses: "Dresses",
+  jalabya: "Jalabiyas",
+}
 
 
   return (
     <div className="products-page">
 
-      <h1>Shop All Products</h1>
+      <h1>
+  {category ? categoryTitles[category] : "Shop All Products"}
+</h1>
 
-      {products.length === 0 ? (
+      {filteredProducts.length === 0 ? (
         <p>No products yet.</p>
       ) : (
 
         <div className="product-grid">
 
-        {products.map((product) => {
+        {filteredProducts.map((product) => {
 
               const isWishlisted = wishlist.some(
               (item) => item._id === product._id

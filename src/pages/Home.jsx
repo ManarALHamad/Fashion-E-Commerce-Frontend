@@ -4,9 +4,9 @@ import { useState } from "react"
 import black from "../assets/images/bg2.png"
 import pink from "../assets/images/bg.png"
 import grey from "../assets/images/bg4.png"
-import abayaCategory from "../assets/images/green.jpeg"
-import jalabiyaCategory from "../assets/images/red.jpeg"
-import dressCategory from "../assets/images/grey.jpeg"
+import abayaCategory from "../assets/images/green3.jpeg"
+import jalabiyaCategory from "../assets/images/grey2.jpeg"
+import dressCategory from "../assets/images/dress.jpeg"
 
 
 const Home = () => {
@@ -141,10 +141,8 @@ const Home = () => {
     </Link>
 
 
-    <Link
-      to="/products?category=dresses"
-      className="category-card"
-    >
+    <Link to="/products?category=dresses" className="category-card">
+    
       <img
         src={dressCategory}
         alt="Dresses"
