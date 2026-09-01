@@ -576,12 +576,13 @@ body {
   align-items: center;
   min-height: 100vh;
   padding: 20px;
+  width: 1000px;
 }
 
 /* Card Outer Shell */
 .card {
   width: 100%;
-  max-width: 340px; 
+  /* max-width: 340px;  */
   background: white;
   border-radius: 19px;
   box-shadow: 0px 187px 75px rgba(0, 0, 0, 0.01),
