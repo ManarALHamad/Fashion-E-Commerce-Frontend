@@ -78,53 +78,68 @@ const Checkout = () => {
   }
 
   return (
-    <div className="checkout-page">
+<div className="container">
 
-      <h1>Checkout</h1>
+  <div className="card cart checkout">
 
-      <form onSubmit={handleSubmit}>
+  <div className="title">
+    <h1>Checkout</h1>
+  </div>
 
-        <label>Name</label>
+  <div className="steps">
+  <form onSubmit={handleSubmit} className="step">
 
-        <input type="text" name="customer_name" value={formData.customer_name} onChange={handleChange} required />
+  <label>
+  <span>Name</span>
+  
+  <input type="text" className="input_field" name="customer_name" value={formData.customer_name} onChange={handleChange} required />
+  </label>
 
-        <label>Email</label>
-
-        <input type="email" name="customer_email" value={formData.customer_email} onChange={handleChange} required />
-       
-        <label>Phone</label>
-
-        <input type="text" name="customer_phone" value={formData.customer_phone}  onChange={handleChange} required />
-   
-        <label>Delivery Address</label>
-
-        <textarea name="delivery_address" value={formData.delivery_address} onChange={handleChange} required />
+  <label>
+  <span>Email</span>
+  <input type="email" className="input_field" name="customer_email" value={formData.customer_email} onChange={handleChange} required />
+  </label>
+         
+  <label>
+  <span>Phone</span>
+  <input type="text" className="input_field" name="customer_phone" value={formData.customer_phone}  onChange={handleChange} required />
+  </label>
      
-        <label>Payment Method</label>
+  <label>
+  <span>Delivery Address</span>
+  <textarea className="input_field textarea_field" name="delivery_address" value={formData.delivery_address} onChange={handleChange} required />
+  </label>
+       
+  <label>
+  <span>Payment Method</span>
+  <select className="input_field select_field" name="payment_method" value={formData.payment_method} onChange={handleChange} >
+  <option value="cod">Cash on Delivery</option>
+  <option value="online">Online Payment</option>
+  </select>
+  </label>
 
-        <select name="payment_method" value={formData.payment_method} onChange={handleChange} >
-      
-          <option value="cod">Cash on Delivery</option>
-          <option value="online">Online Payment</option>
-        </select>
+  {error && <p className="error-msg">{error}</p>}
 
-        <h2>
-          Total: {totalPrice.toFixed(3)} BHD
-        </h2>
+  {success && (<p className="order-success">
+    Order submitted successfully!:dancer::skin-tone-2:
+</p>)}
 
-        {error && <p>{error}</p>}
+<div className="footer">
+  <h2 className="price">
+    Total: {totalPrice.toFixed(3)} <sup>BHD</sup>
+  </h2>
 
-        {success && (<p className="order-success">
-            Order submitted successfully!💃🏻
-        </p>)}
+<button type="submit" className="checkout-btn" disabled={submitting || cart.length === 0}>
+    {submitting ? "Placing Order..." : "Place Order"}
+</button>
+</div>
 
-        <button type="submit" disabled={submitting || cart.length === 0}>
-          {submitting ? "Placing Order..." : "Place Order"}
-        </button>
+</form>
+</div>
 
-      </form>
+</div>
 
-    </div>
+</div>
   )
 }
 
