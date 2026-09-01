@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router"
+import { Link, useSearchParams } from "react-router"
 import { index } from "../../services/productService"
 import { Heart } from "lucide-react"
 import * as wishlistService from "../../services/wishlistService"
@@ -11,6 +11,10 @@ const ViewProduct = () => {
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)
   const [wishlist, setWishlist] = useState(wishlistService.getWishList())
+  const [searchParams] = useSearchParams()
+  const category = searchParams.get("category")
+
+
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -50,6 +54,19 @@ if (isAlreadySaved) {
   if (loading) {
     return <div className="loader-container"><span className="loader"></span></div>
   }
+
+  const filteredProducts = category ?
+
+     products.filter((product) => product.category === category):products
+
+  
+
+
+
+
+
+
+
 
   return (
     <div className="products-page">

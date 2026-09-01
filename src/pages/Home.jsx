@@ -4,6 +4,10 @@ import { useState } from "react"
 import black from "../assets/images/bg2.png"
 import pink from "../assets/images/bg.png"
 import grey from "../assets/images/bg4.png"
+import abayaCategory from "../assets/images/green.jpeg"
+import jalabiyaCategory from "../assets/images/red.jpeg"
+import dressCategory from "../assets/images/grey.jpeg"
+
 
 const Home = () => {
 
@@ -94,6 +98,80 @@ const Home = () => {
         </div>
 
       </section>
+
+
+<section className="home-categories">
+
+  <div className="categories-heading">
+    <p>DISCOVER OUR COLLECTIONS</p>
+    <h2>Shop by Category</h2>
+  </div>
+
+  <div className="category-grid">
+
+    <Link
+      to="/products?category=abayas"
+      className="category-card"
+    >
+      <img
+        src={abayaCategory}
+        alt="Abayas"
+      />
+
+      <div className="category-overlay">
+        <h3>ABAYAS</h3>
+        <span>SHOP NOW</span>
+      </div>
+    </Link>
+
+
+    <Link
+      to="/products?category=jalabya"
+      className="category-card"
+    >
+      <img
+        src={jalabiyaCategory}
+        alt="Jalabiyas"
+      />
+
+      <div className="category-overlay">
+        <h3>JALABIYAS</h3>
+        <span>SHOP NOW</span>
+      </div>
+    </Link>
+
+
+    <Link
+      to="/products?category=dresses"
+      className="category-card"
+    >
+      <img
+        src={dressCategory}
+        alt="Dresses"
+      />
+
+      <div className="category-overlay">
+        <h3>DRESSES</h3>
+        <span>SHOP NOW</span>
+      </div>
+    </Link>
+
+  </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     </main>
   )
