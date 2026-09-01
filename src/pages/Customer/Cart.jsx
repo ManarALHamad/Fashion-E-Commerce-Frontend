@@ -57,7 +57,7 @@ const Cart = () => {
     <div className="card cart">
       <div className="title">Your Cart</div>
 
-      {/* Item List */}
+
       <div className="products">
         {cart.map((item) => (
           <div className="product" key={item.variantId}>
@@ -68,7 +68,7 @@ const Cart = () => {
               </Link>
             )}
 
-            {/* Title & Size */}
+
             <div>
               <span>{item.productName}</span>
               <p>Size: {item.size}</p>
@@ -85,7 +85,7 @@ const Cart = () => {
               </button>
             </div>
 
-            {/* Price */}
+
             <div className="price small">
               {(Number(item.price) * item.quantity).toFixed(3)} <sup>BHD</sup>
             </div>
