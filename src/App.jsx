@@ -24,6 +24,7 @@ import Contact from "./pages/Contact"
 import AboutUs from "./pages/About"
 import AdminOrders from "./pages/admin/AdminOrders"
 import Profile from "./pages/Customer/Profile"
+import AdminDashboard from "./pages/admin/AdminDashboard"
 
 
 const getUserFromToken = () => {
@@ -77,7 +78,8 @@ const App = () => {
         <Route path="/eid_adha" element={ <EidAdhaCollection/> } />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/admin/orders" element={<AdminOrders />} />
-        
+        <Route path="/admin" element={<AdminDashboard/>}/>
+
         <Route path="/about_us" element={<AboutUs/>}/>
         <Route path="/contact" element={<Contact/>} />
         <Route path="/profile" element={<Profile user={user} />}  />
