@@ -1045,8 +1045,6 @@ h2 {
   }
 }
 
-
-
 .navBar {
   min-height: 90px;
   padding: 0 2%;
@@ -1066,7 +1064,6 @@ h2 {
   justify-content: space-around;
   gap: 10px;
 }
-
 
 .sign-out{
   display: flex;
@@ -1138,9 +1135,115 @@ h2 {
   background-color: #e9e5de;
 }
 
-.aboutUsHeader{
-  background-color: #19341A;
+/* =========================
+   MOBILE NAV
+========================= */
+
+@media (max-width: 768px) {
+
+  /* TOP GREEN MARQUEE */
+  .header {
+    height: 30px;
+    font-size: 11px;
+    letter-spacing: 0.2px;
+  }
+
+  .header span {
+    padding-left: 100%;
+    animation: marquee 9s linear infinite;
+  }
+
+
+  /* NAVBAR */
+  .navBar {
+    min-height: 65px;
+    padding: 0 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: relative;
+  }
+
+
+  /* LOGO */
+  .logo-img {
+    width: 48px;
+    height: auto;
+  }
+
+
+  /* NAV LINKS */
+  .nav-list {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 12px;
+
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav-list li {
+    display: flex;
+    align-items: center;
+  }
+
+
+  /* HIDE NORMAL TEXT LINKS ON MOBILE */
+  .nav-list > li > a {
+    font-size: 12px;
+  }
+
+
+  /* COLLECTIONS */
+  .nav-dropdown-title {
+    font-size: 12px;
+
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+
+
+  /* DROPDOWN */
+  .nav-dropdown-menu {
+    top: 100%;
+    left: 50%;
+
+    min-width: 150px;
+
+    margin-top: 10px;
+    padding: 7px 0;
+  }
+
+  .nav-dropdown-menu a {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+
+  /* ICONS */
+  .navBar svg {
+    width: 19px;
+    height: 19px;
+  }
+
+
+  /* SIGN OUT */
+  .sign-out {
+    margin-left: 4px;
+
+    padding: 4px 7px;
+
+    font-size: 11px;
+
+    white-space: nowrap;
+  }
 }
+
 
 @font-face {
   font-family: "Queensides";
@@ -1148,8 +1251,357 @@ h2 {
   font-weight: 300;
 }
 
-.aboutUsP{
-    font-family: "Queensides", sans-serif;
+
+.about-page {
+  min-height: calc(100vh - 140px);
+  background-color: #f8f6f0;
+  padding: 40px 8%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-section {
+  width: 100%;
+  max-width: 1200px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 70px;
+}
+
+/* LEFT SIDE */
+
+.about-left {
+  flex: 1;
+  max-width: 500px;
+}
+
+.about-title {
+  font-family: "Queensides", serif;
+  font-size: 58px;
+  font-weight: 400;
+  color: #111;
+  margin: 0 0 15px 0;
+  line-height: 1.1;
+}
+
+/* make the word "Us" green-ish using CSS */
+.about-title::first-letter {
+  color: inherit;
+}
+
+/* GOLD LINE */
+
+.gold-divider {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.gold-divider span {
+  height: 1px;
+  background-color: #b79b61;
+  flex: 1;
+}
+
+.gold-divider p {
+  color: #b79b61;
+  margin: 0 10px;
+  font-size: 12px;
+}
+
+/* DESCRIPTION */
+
+.about-description {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.55;
+  color: #191919;
+  margin: 0;
+  max-width: 470px;
+}
+
+/* RIGHT SIDE */
+
+.about-right {
+  flex: 1.15;
+  display: flex;
+  justify-content: center;
+}
+
+.about-image {
+  width: 100%;
+  max-width: 520px;
+  height: 360px;
+
+  object-fit: cover;
+
+  border-radius: 16px;
+
+  display: block;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+  .about-page {
+    padding: 50px 6%;
+  }
+
+  .about-section {
+    gap: 40px;
+  }
+
+  .about-title {
+    font-size: 48px;
+  }
+
+  .about-image {
+    height: 320px;
+  }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+  .about-page {
+    padding: 40px 24px;
+  }
+
+  .about-section {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 35px;
+  }
+
+  .about-left {
+    max-width: 100%;
+  }
+
+  .about-title {
+    font-size: 44px;
+  }
+
+  .about-description {
+    max-width: 100%;
+  }
+
+  .about-right {
+    width: 100%;
+  }
+
+  .about-image {
+    max-width: 100%;
+    height: 350px;
+  }
+}
+
+
+.contact-page {
+  min-height: calc(100vh - 110px);
+  background-color: #faf8f2;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  padding: 15px 20px 40px;
+}
+
+.contact-section {
+  width: 100%;
+  max-width: 500px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+}
+
+
+/* CONTACT TITLE */
+
+.contact-title {
+  margin: 0;
+
+  color: #153b25;
+  font-family: "Queensides", serif;
+  font-size: 42px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+
+/* GOLD DECORATION */
+
+.contact-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 105px;
+  margin: 5px 0 10px;
+}
+
+.contact-divider span {
+  width: 38px;
+  height: 1px;
+  background-color: #b99752;
+}
+
+.contact-divider p {
+  color: #b99752;
+  font-size: 10px;
+  margin: 0 6px;
+}
+
+
+/* BUTTON CONTAINER */
+
+.contact-buttons {
+  width: 100%;
+  max-width: 355px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-buttons form {
+  width: 100%;
+}
+
+
+/* INSTAGRAM + WHATSAPP BUTTON */
+
+.contact-btn {
+  width: 100%;
+  height: 62px;
+
+  padding: 8px 18px;
+
+  background-color: transparent;
+  border: 1px solid #d8d3c7;
+  border-radius: 9px;
+
+  display: flex;
+  align-items: center;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+.contact-btn:hover {
+  border-color: #b99752;
+  background-color: #f5f1e7;
+  transform: translateY(-1px);
+}
+
+
+/* ICON */
+
+.contact-icon {
+  width: 38px;
+  height: 38px;
+
+  object-fit: contain;
+
+  margin-right: 16px;
+}
+
+
+/* TEXT INSIDE BUTTON */
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  flex: 1;
+}
+
+.contact-info p {
+  margin: 0;
+}
+
+.contact-platform {
+  color: #222;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  line-height: 1.2;
+}
+
+.contact-detail {
+  color: #333;
+
+  font-size: 13px;
+  font-weight: 400;
+
+  margin-top: 2px !important;
+}
+
+
+/* ARROW */
+
+.contact-arrow {
+  color: #b99752;
+  margin-left: auto;
+}
+
+
+/* HEART + THANK YOU */
+
+.contact-thanks {
+  margin-top: 14px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  color: #b99752;
+}
+
+.contact-thanks p {
+  margin: 6px 0 0;
+
+  color: #222;
+  font-size: 12px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  .contact-page {
+    padding: 25px 20px;
+  }
+
+  .contact-title {
+    font-size: 36px;
+  }
+
+  .contact-buttons {
+    max-width: 100%;
+  }
+
+  .contact-btn {
+    height: 60px;
+  }
 }
 
 /* ========================================
