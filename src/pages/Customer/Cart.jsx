@@ -56,74 +56,56 @@ const Cart = () => {
 
 
   return (
-    <div>
+    <div className="card cart">
+      <div className="title">Your Cart</div>
 
-      <h1>Cart</h1>
-
-
-      {cart.map((item) => (
-
-        <div key={item.variantId}>
-
-          {item.image && (
-          <Link to={`/products/${item.productId}`}>
-            <img
-              src={`${BASE_URL}${item.image}`}
-              alt={item.productName}
-              width="150"/> 
-          </Link>
-          )}
-       
-          <Link to={`/products/${item.productId}`}>
-            <h2>{item.productName}</h2>
-          </Link>
-
-          <p>
-            Size: {item.size}
-          </p>
-
-
-          <p>
-            Price: {(Number(item.price) *item.quantity).toFixed(3)} BHD
-          </p>
-
-
-          <p>
-            Quantity: 
-            {item.quantity === 1 ? (
-              <button onClick={() => handleRemove(item.variantId)}>
-                <Trash2 size={21} strokeWidth={1.6}/>
-              </button>
-              ) : (
-              <button onClick={() => handleRemove(item.variantId)}>
-                <Minus size={21} strokeWidth={1.6}/>
-              </button>
+      {/* Item List */}
+      <div className="products">
+        {cart.map((item) => (
+          <div className="product" key={item.variantId}>
+            {/* Image */}
+            {item.image && (
+              <Link to={`/products/${item.productId}`}>
+                <img src={`${BASE_URL}${item.image}`} alt={item.productName} />
+              </Link>
             )}
 
-            <span>{item.quantity}</span>
-            <button onClick={() => handleAdd(item)}>
-              <Plus size={21} strokeWidth={1.6}/>
-            </button>
-          </p>
+            {/* Title & Size */}
+            <div>
+              <span>{item.productName}</span>
+              <p>Size: {item.size}</p>
+            </div>
 
+            {/* Counter */}
+            <div className="quantity">
+              <button onClick={() => handleRemove(item.variantId)}>
+                {item.quantity === 1 ? <Trash2 size={14} /> : <Minus size={14} />}
+              </button>
+              <label>{item.quantity}</label>
+              <button onClick={() => handleAdd(item)}>
+                <Plus size={14} />
+              </button>
+            </div>
+
+            {/* Price */}
+            <div className="price small">
+              {(Number(item.price) * item.quantity).toFixed(3)} <sup>BHD</sup>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Footer & Checkout */}
+      <div className="checkout--footer">
+        <div className="price">
+          {totalPrice.toFixed(3)} <sup>BHD</sup>
         </div>
-
-      ))}
-
-      <hr />
-
-      <h2>
-        Cart Total: {totalPrice.toFixed(3)} BHD
-      </h2>
-
-      <button onClick={handleCheckout}>
-      Proceed to Checkout
-
-      </button>
-
+        <button className="checkout-btn" onClick={handleCheckout}>
+          Checkout
+        </button>
+      </div>
     </div>
   )
 }
-
 
 export default Cart
