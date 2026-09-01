@@ -569,170 +569,193 @@ body {
    CHECKOUT
 ========================= */
 
-/* Screen Centering & Layout */
+/* Checkout Page */ 
+
 .container {
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  padding: 20px;
-  width: 1000px;
+  padding: 40px 20px;
 }
 
-/* Card Outer Shell */
-.card {
+.card.checkout {
   width: 100%;
-  /* max-width: 340px;  */
-  background: white;
-  border-radius: 19px;
-  box-shadow: 0px 187px 75px rgba(0, 0, 0, 0.01),
-              0px 105px 63px rgba(0, 0, 0, 0.05),
-              0px 47px 47px rgba(0, 0, 0, 0.09),
-              0px 12px 26px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  font-family: inherit;
+  max-width: 650px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 35px;
+  box-shadow: 0 10px 30px rgba(25, 52, 26, 0.15);
 }
 
-/* Card Header Title */
+/* Title */
+
 .title {
-  width: 100%;
-  height: 45px;
-  display: flex;
-  align-items: center;
-  padding-left: 20px;
-  border-bottom: 1px solid rgba(16, 86, 82, 0.75);
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .title h1 {
-  font-size: 13px;
-  font-weight: 700;
-  color: #000000;
   margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  color: #19341A;
+  font-size: 32px;
+  font-weight: 700;
 }
 
-/* Form Container */
-.steps {
-  padding: 16px 20px 0 20px;
-}
+/* Form */
 
 .step {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 20px;
 }
 
 .step label {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
 }
 
 .step label span {
-  font-size: 12px;
+  color: #19341A;
+  font-size: 15px;
   font-weight: 600;
-  color: #000000;
 }
 
-/* Form Fields (Input, Textarea, Select) */
+/* Inputs */
+
 .input_field {
   width: 100%;
-  height: 36px;
-  padding: 0 12px;
-  border-radius: 5px;
-  outline: none;
-  border: 1px solid rgb(16, 86, 82);
-  background-color: 19341A;
-  font-size: 13px;
-  color: #000000;
   box-sizing: border-box;
-  transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+  padding: 13px 15px;
+  border: 1.5px solid #d5d8cc;
+  border-radius: 10px;
+  background-color: #fafbf7;
+  color: #19341A;
+  font-size: 15px;
+  font-family: inherit;
+  outline: none;
+  transition: 0.2s ease;
 }
 
-.textarea_field {
-  height: 65px;
-  padding-top: 8px;
-  resize: vertical;
-  font-family: inherit;
+.input_field:focus {
+  border-color: #19341A;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(25, 52, 26, 0.08);
 }
+
+/* Textarea */
+
+.textarea_field {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Select */
 
 .select_field {
   cursor: pointer;
 }
 
-.input_field:focus {
-  border: 1px solid transparent;
-  box-shadow: 0px 0px 0px 2px rgb(16, 86, 82);
-  background-color: rgb(240, 230, 210);
-}
+/* Messages */
 
-/* Status Messages */
 .error-msg {
-  font-size: 11px;
-  font-weight: 600;
-  color: #d9381e;
   margin: 0;
+  padding: 12px 15px;
+  border-radius: 8px;
+  background-color: #fbe8e8;
+  color: #a52a2a;
+  font-size: 14px;
 }
 
 .order-success {
-  font-size: 11px;
-  font-weight: 600;
-  color: rgb(16, 86, 82);
   margin: 0;
+  padding: 12px 15px;
+  border-radius: 8px;
+  background-color: #e5f2e5;
+  color: #19341A;
+  font-size: 14px;
+  font-weight: 600;
 }
 
-/* Footer Section & Price */
+/* Bottom section */
+
 .footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 10px -20px 0 -20px; 
-  padding: 14px 20px;
-  background-color: 19341A;
-  border-top: 1px solid rgba(16, 86, 82, 0.3);
+  gap: 20px;
+  margin-top: 10px;
+  padding-top: 25px;
+  border-top: 1px solid #e1e3da;
 }
 
 .price {
-  font-size: 14px;
-  color: #2b2b2f;
-  font-weight: 800;
+  margin: 0;
+  color: #19341A;
+  font-size: 22px;
 }
 
 .price sup {
-  font-size: 10px;
-}
-
-/* Action Button */
-.checkout-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 9px;
-  margin-left: 10px;
-  height: 36px;
-  background: 19341A;
-  box-shadow: 0px 0.5px 0.5px rgba(16, 86, 82, 0.75);
-  border-radius: 7px;
-  border: 1px solid rgb(16, 86, 82);
-  color: #ffffff;
   font-size: 12px;
   font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
 }
 
-.checkout-btn:hover:not(:disabled) {
-  background: rgb(16, 86, 82);
+/* Checkout Button */
+
+.checkout-btn {
+  border: none;
+  border-radius: 10px;
+  padding: 14px 24px;
+  background-color: #19341A;
+  color: #E9EBDF;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.checkout-btn:hover {
+  background-color: #2b542d;
   transform: translateY(-1px);
 }
 
 .checkout-btn:disabled {
-  opacity: 0.5;
+  background-color: #aeb5a8;
+  color: #ffffff;
   cursor: not-allowed;
+  transform: none;
 }
 
+/* Mobile */
 
+@media (max-width: 600px) {
+  .container {
+    padding: 20px 12px;
+  }
+
+  .card.checkout {
+    padding: 25px 20px;
+    border-radius: 15px;
+  }
+
+  .title h1 {
+    font-size: 28px;
+  }
+
+  .footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .price {
+    text-align: center;
+  }
+
+  .checkout-btn {
+    width: 100%;
+  }
+}
 
 /* =========================
    HERO
