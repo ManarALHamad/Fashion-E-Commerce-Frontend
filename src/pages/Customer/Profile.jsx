@@ -45,7 +45,7 @@ return(
 
       <div className="profile-container">
 
-        {/* ACCOUNT DETAILS */}
+    
         <section className="profile-details">
 
           <div className="profile-avatar">
@@ -83,7 +83,6 @@ return(
         </section>
 
 
-        {/* ORDERS */}
         <section className="profile-orders">
 
           <div className="profile-orders-heading">
@@ -123,7 +122,7 @@ return(
 
                 <article key={order._id} className="profile-order">
 
-                  {/* ORDER TOP */}
+            
                   <div className="profile-order-header">
 
                     <div>
