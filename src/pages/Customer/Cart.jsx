@@ -100,10 +100,21 @@ const Cart = () => {
         <div className="price">
           {totalPrice.toFixed(3)} <sup>BHD</sup>
         </div>
-        <button className="checkout-btn" onClick={handleCheckout}>
-          Checkout
-        </button>
-      </div>
+
+      ))}
+
+      <hr />
+
+      <h2>
+        Cart Total: {totalPrice.toFixed(3)} BHD
+      </h2>
+
+      <button onClick={handleCheckout}>
+
+      Proceed to Checkout
+
+      </button>
+
     </div>
   )
 }
