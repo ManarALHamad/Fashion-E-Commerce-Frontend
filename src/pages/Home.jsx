@@ -3,7 +3,7 @@ import { useState } from "react"
 
 import black from "../assets/images/bg2.png"
 import pink from "../assets/images/bg.png"
-import grey from "../assets/images/bg3.png"
+import grey from "../assets/images/bg4.png"
 
 const Home = () => {
 
@@ -12,24 +12,15 @@ const Home = () => {
   const slides = [
     {
       image: pink,
-      smallTitle: "TIMELESS ELEGANCE",
-      title: "JALABIYAS",
-      description:
-        "Discover beautifully crafted pieces designed for every occasion.",
-    },
-    {
-      image: grey,
-      smallTitle: "NEW COLLECTION",
-      title: "ELEGANCE",
-      description:
-        "Traditional craftsmanship designed with a modern touch.",
+      position: "slide-pink",
     },
     {
       image: black,
-      smallTitle: "EXCLUSIVE COLLECTION",
-      title: "STATEMENT PIECES",
-      description:
-        "Explore distinctive designs made to make every moment special.",
+      position: "slide-black",
+    },
+    {
+      image: grey,
+      position: "slide-grey",
     },
   ]
 
@@ -45,36 +36,30 @@ const Home = () => {
     )
   }
 
-  return (
+      return (
     <main className="home">
 
       <section className="hero-slider">
 
-     
-        <img src={slides[currentSlide].image} alt={slides[currentSlide].title}  className="hero-image" />
-     
+        <img
+          src={slides[currentSlide].image}
+          alt="N Designs Collection"
+          className="hero-image"
+        />
 
-    
-        <div className="hero-content">
-
-          <p className="hero-small-title"> {slides[currentSlide].smallTitle}
-          </p>
-
-          <h1 className="hero-title"> {slides[currentSlide].title}
-            
+   
+        <div className={`hero-content ${slides[currentSlide].position}`} >
+         
+          <h1 className="hero-title">
+            Designed to be remembered
           </h1>
 
-          <p className="hero-description"> {slides[currentSlide].description}
-            
-          </p>
-
-          <Link to="/products" className="shop-now-btn"> SHOP NOW
-           
+          <Link to="/products" className="shop-now-btn">
+            SHOP NOW
           </Link>
-
         </div>
 
-       
+      
         <button
           className="hero-arrow hero-arrow-left"
           onClick={previousSlide}
@@ -83,7 +68,7 @@ const Home = () => {
           ‹
         </button>
 
-        
+
         <button
           className="hero-arrow hero-arrow-right"
           onClick={nextSlide}
@@ -92,12 +77,11 @@ const Home = () => {
           ›
         </button>
 
-       
+   
         <div className="hero-dots">
-
           {slides.map((slide, index) => (
-            <button key={index}
-              
+            <button
+              key={index}
               className={
                 currentSlide === index
                   ? "hero-dot active"

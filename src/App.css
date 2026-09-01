@@ -774,3 +774,533 @@ h2 {
     font-family: "Queensides", sans-serif;
 }
 
+/* ========================================
+   HOME
+======================================== */
+
+.home {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* ========================================
+   HERO SLIDER
+======================================== */
+
+.hero-slider {
+  position: relative;
+
+  width: 100%;
+  height: calc(100vh - 80px);
+  min-height: 650px;
+
+  overflow: hidden;
+
+  background-color: #f2e8df;
+}
+
+
+/* ========================================
+   HERO IMAGE
+======================================== */
+
+.hero-image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+}
+
+
+/* ========================================
+   HERO CONTENT
+======================================== */
+
+.hero-content {
+  position: absolute;
+
+  z-index: 5;
+
+  width: 390px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+
+/* ========================================
+   INDIVIDUAL IMAGE POSITIONS
+======================================== */
+
+
+/* PINK IMAGE */
+
+.slide-pink {
+  top: 48%;
+  left: 11%;
+
+  transform: translateY(-50%);
+}
+
+
+/* BLACK / GOLD IMAGE */
+
+.slide-black {
+  top: 51%;
+  left: 10%;
+
+  transform: translateY(-50%);
+}
+
+
+/* GREY / THIRD IMAGE */
+
+.slide-grey {
+  top: 49%;
+  left: 11%;
+
+  transform: translateY(-50%);
+}
+
+
+/* ========================================
+   HERO TITLE
+======================================== */
+
+.hero-title {
+  width: 100%;
+  max-width: 390px;
+
+  margin: 0 0 22px 0;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: clamp(40px, 4vw, 65px);
+
+  font-weight: 400;
+
+  line-height: 1.02;
+
+  letter-spacing: -1px;
+
+  text-align: center;
+
+  color: #173b29;
+}
+
+
+/* ========================================
+   SHOP NOW BUTTON
+======================================== */
+
+.shop-now-btn {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: fit-content;
+  min-width: unset;
+
+  padding: 11px 22px;
+
+  margin: 0 auto;
+
+  background-color: #211c1a;
+
+  color: #ffffff;
+
+  border: 1px solid #211c1a;
+
+  text-decoration: none;
+
+  font-size: 10px;
+
+  font-weight: 400;
+
+  letter-spacing: 2px;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+
+.shop-now-btn:hover {
+  background-color: transparent;
+
+  color: #211c1a;
+
+  transform: translateY(-2px);
+}
+
+
+/* ========================================
+   ARROWS
+======================================== */
+
+.hero-arrow {
+  position: absolute;
+
+  top: 50%;
+
+  z-index: 10;
+
+  transform: translateY(-50%);
+
+  width: 50px;
+  height: 50px;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 50%;
+
+  background-color: rgba(255, 255, 255, 0.9);
+
+  color: #211c1a;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 32px;
+  font-weight: 300;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+
+.hero-arrow:hover {
+  background-color: #ffffff;
+
+  transform:
+    translateY(-50%)
+    scale(1.07);
+}
+
+
+/* LEFT ARROW */
+
+.hero-arrow-left {
+  left: 35px;
+}
+
+
+/* RIGHT ARROW */
+
+.hero-arrow-right {
+  right: 35px;
+}
+
+
+/* ========================================
+   SLIDER DOTS
+======================================== */
+
+.hero-dots {
+  position: absolute;
+
+  left: 50%;
+  bottom: 25px;
+
+  transform: translateX(-50%);
+
+  z-index: 10;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+
+.hero-dot {
+  width: 9px;
+  height: 9px;
+
+  padding: 0;
+
+  border: 1px solid #ffffff;
+
+  border-radius: 50%;
+
+  background-color: transparent;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+
+.hero-dot.active {
+  background-color: #ffffff;
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 1024px) {
+
+  .hero-slider {
+    height: 75vh;
+
+    min-height: 600px;
+  }
+
+
+  .hero-content {
+    width: 320px;
+  }
+
+
+  .slide-pink {
+    left: 8%;
+  }
+
+
+  .slide-black {
+    left: 8%;
+  }
+
+
+  .slide-grey {
+    left: 8%;
+  }
+
+
+  .hero-title {
+    max-width: 320px;
+
+    font-size: 45px;
+
+    margin-bottom: 20px;
+  }
+
+
+  .shop-now-btn {
+    padding: 10px 20px;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+  }
+
+
+  .hero-arrow-left {
+    left: 20px;
+  }
+
+
+  .hero-arrow-right {
+    right: 20px;
+  }
+
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 768px) {
+
+  .hero-slider {
+    height: 75vh;
+
+    min-height: 520px;
+  }
+
+
+  .hero-image {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+  }
+
+
+  /* Same centered layout on mobile */
+
+  .hero-content,
+  .slide-pink,
+  .slide-black,
+  .slide-grey {
+    top: auto;
+
+    left: 50%;
+    right: auto;
+
+    bottom: 65px;
+
+    transform: translateX(-50%);
+
+    width: 280px;
+
+    align-items: center;
+
+    text-align: center;
+  }
+
+
+  .hero-title {
+    width: 100%;
+
+    max-width: 280px;
+
+    margin: 0 0 18px 0;
+
+    font-size: 36px;
+
+    line-height: 1.05;
+
+    letter-spacing: -0.5px;
+
+    text-align: center;
+  }
+
+
+  .shop-now-btn {
+    width: fit-content;
+
+    min-width: unset;
+
+    padding: 10px 19px;
+
+    margin: 0 auto;
+
+    font-size: 9px;
+
+    letter-spacing: 1.8px;
+  }
+
+
+  /* MOBILE ARROWS */
+
+  .hero-arrow {
+    width: 40px;
+    height: 40px;
+
+    font-size: 27px;
+  }
+
+
+  .hero-arrow-left {
+    left: 12px;
+  }
+
+
+  .hero-arrow-right {
+    right: 12px;
+  }
+
+
+  /* MOBILE DOTS */
+
+  .hero-dots {
+    bottom: 20px;
+  }
+
+
+  .hero-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+}
+
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 480px) {
+
+  .hero-slider {
+    height: 70vh;
+
+    min-height: 500px;
+  }
+
+
+  .hero-content,
+  .slide-pink,
+  .slide-black,
+  .slide-grey {
+    left: 50%;
+
+    bottom: 60px;
+
+    width: 240px;
+
+    transform: translateX(-50%);
+  }
+
+
+  .hero-title {
+    max-width: 240px;
+
+    margin-bottom: 16px;
+
+    font-size: 30px;
+
+    line-height: 1.05;
+  }
+
+
+  .shop-now-btn {
+    padding: 9px 17px;
+
+    font-size: 8px;
+
+    letter-spacing: 1.7px;
+  }
+
+
+  .hero-arrow {
+    width: 36px;
+    height: 36px;
+
+    font-size: 24px;
+  }
+
+
+  .hero-arrow-left {
+    left: 8px;
+  }
+
+
+  .hero-arrow-right {
+    right: 8px;
+  }
+
+
+  .hero-dots {
+    bottom: 17px;
+  }
+
+}
