@@ -18,9 +18,10 @@ const create = async (orderFormData) => {
   }
 
   return data
+
     } 
 
-//customers viewing their orders 
+
 
 const indexMine = async () => {
 
@@ -37,8 +38,6 @@ const indexMine = async () => {
         return res.json()
  
 }
-
-//admin views all orders 
 
 const indexAll = async () => {
   try {
@@ -80,10 +79,34 @@ const deleteOrder = async (orderId) => {
   return data
 }
 
+const updateStatus = async (orderId, orderStatus) => {
+  try {
+const res = await fetch(`${BASE_URL}/${orderId}`, {
+  method: 'PUT',
+  headers: {
+  Authorization: `Bearer ${localStorage.getItem('token')}`,'Content-Type': 'application/json',
+},
+  body: JSON.stringify({ order_status: orderStatus }),
+})
+
+const data = await res.json()
+
+if (!res.ok) {
+throw new Error(JSON.stringify(data))
+}
+
+return data
+} catch (error) {
+  console.log(error)
+throw error
+}
+}
+
 
 export {
   create,
   indexMine,
   indexAll,
   deleteOrder,
+  updateStatus,
 }

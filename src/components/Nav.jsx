@@ -1,5 +1,5 @@
 import { Link } from "react-router"
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   UserRound,
   Heart,
@@ -16,6 +16,9 @@ const Nav = (props) => {
     const [cart, setCart] = useState(getCart())
     const [collectionsOpen, setCollectionsOpen] = useState(false)
 
+    useEffect(()=>{
+        setCart(getCart())
+    },[props.updateCart])
 
     const cartCount = cart.reduce((total, item) => {
       return total + item.quantity

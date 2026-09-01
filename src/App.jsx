@@ -24,6 +24,7 @@ import Contact from "./pages/Contact"
 import AboutUs from "./pages/About"
 import AdminOrders from "./pages/admin/AdminOrders"
 import Profile from "./pages/Customer/Profile"
+import AdminDashboard from "./pages/admin/AdminDashboard"
 
 
 const getUserFromToken = () => {
@@ -41,6 +42,7 @@ const App = () => {
 
   const [user, setUser] = useState(getUserFromToken())
   const [products, setProducts] = useState([])
+  const [updateCart, setUpdateCart] = useState(false)
 
   useEffect(() => {
     const fetchAllProducts = async(formData) => {
@@ -56,7 +58,7 @@ const App = () => {
   
   return (
     <div>
-      <Nav user={user} setUser={setUser} />
+      <Nav user={user} setUser={setUser} updateCart={updateCart} />
       <main className="app-main">
       <Routes>
         <Route path="/" element={<Home />}/>
@@ -67,7 +69,7 @@ const App = () => {
         <Route path="/admin/products" element={<AdminProducts />} />
         <Route path="/admin/products/:productId" element={<ProductDetails />} />
         <Route path="/products" element={<ViewProduct />} />
-        <Route path="products/:productId" element={<CustomerProductDetails/> } />
+        <Route path="products/:productId" element={<CustomerProductDetails updateCart={updateCart} setUpdateCart={setUpdateCart} /> } />
         <Route path="/new" element={<NewCollection />} />
         <Route path="/cart" element={<Cart />}/>
         <Route path="/wishlist" element={<WishList />} />
@@ -77,7 +79,8 @@ const App = () => {
         <Route path="/eid_adha" element={ <EidAdhaCollection/> } />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/admin/orders" element={<AdminOrders />} />
-        
+        <Route path="/admin" element={<AdminDashboard/>}/>
+
         <Route path="/about_us" element={<AboutUs/>}/>
         <Route path="/contact" element={<Contact/>} />
         <Route path="/profile" element={<Profile user={user} />}  />

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router"
+import { Link, useSearchParams } from "react-router"
 import { index } from "../../services/productService"
 import { Heart } from "lucide-react"
 import * as wishlistService from "../../services/wishlistService"
@@ -11,6 +11,10 @@ const ViewProduct = () => {
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)
   const [wishlist, setWishlist] = useState(wishlistService.getWishList())
+  const [searchParams] = useSearchParams()
+  const category = searchParams.get("category")
+
+
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -51,18 +55,31 @@ if (isAlreadySaved) {
     return <div className="loader-container"><span className="loader"></span></div>
   }
 
+  const filteredProducts = category ?
+
+     products.filter((product) => product.category === category):products
+
+  const categoryTitles = {
+  abayas: "Abayas",
+  dresses: "Dresses",
+  jalabya: "Jalabiyas",
+}
+
+
   return (
     <div className="products-page">
 
-      <h1>Shop All Products</h1>
+      <h1>
+  {category ? categoryTitles[category] : "Shop All Products"}
+</h1>
 
-      {products.length === 0 ? (
+      {filteredProducts.length === 0 ? (
         <p>No products yet.</p>
       ) : (
 
         <div className="product-grid">
 
-        {products.map((product) => {
+        {filteredProducts.map((product) => {
 
               const isWishlisted = wishlist.some(
               (item) => item._id === product._id
