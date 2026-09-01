@@ -5,8 +5,6 @@ import { Trash2, Plus, Minus } from 'lucide-react';
 // import Checkout from "./Checkout"
 
 
-
-
 const BASE_URL = import.meta.env.VITE_BACK_END_SERVER_URL
 
 const Cart = () => {
