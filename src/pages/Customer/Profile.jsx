@@ -36,6 +36,7 @@ return (
       <h1>My Profile</h1>
 
       <div className="profile-details">
+        
         <h2>Account Details</h2>
 
         <p>

@@ -18,9 +18,10 @@ const create = async (orderFormData) => {
   }
 
   return data
+
     } 
 
-//customers viewing their orders 
+
 
 const indexMine = async () => {
 
@@ -37,8 +38,6 @@ const indexMine = async () => {
         return res.json()
  
 }
-
-//admin views all orders 
 
 const indexAll = async () => {
   try {

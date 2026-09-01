@@ -117,6 +117,7 @@ const Cart = () => {
       </h2>
 
       <button onClick={handleCheckout}>
+
       Proceed to Checkout
 
       </button>
