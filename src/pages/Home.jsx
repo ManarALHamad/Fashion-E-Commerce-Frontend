@@ -1,49 +1,175 @@
 import { Link } from "react-router"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
-import logo from "../assets/images/logo.png"
-import ViewProduct from "./Customer/ViewProduct"
-import { getCart } from "../services/cartService"
+import black from "../assets/images/bg2.png"
+import pink from "../assets/images/bg.png"
+import grey from "../assets/images/bg4.png"
+import abayaCategory from "../assets/images/green3.jpeg"
+import jalabiyaCategory from "../assets/images/grey2.jpeg"
+import dressCategory from "../assets/images/dress.jpeg"
 
 
 const Home = () => {
 
-    const [products, setProducts] = useState([])
-    const [loading, setLoading] = useState(true)
+  const [currentSlide, setCurrentSlide] = useState(0)
 
-    const [cart, setCart] = useState(getCart())
+  const slides = [
+    {
+      image: pink,
+      position: "slide-pink",
+    },
+    {
+      image: black,
+      position: "slide-black",
+    },
+    {
+      image: grey,
+      position: "slide-grey",
+    },
+  ]
 
-    const cartCount = cart.reduce((total, item) => {
-      return total + item.quantity
-    }, 0)
+  const nextSlide = () => {
+    setCurrentSlide((prev) =>
+      prev === slides.length - 1 ? 0 : prev + 1
+    )
+  }
 
-    useEffect (() => {
+  const previousSlide = () => {
+    setCurrentSlide((prev) =>
+      prev === 0 ? slides.length - 1 : prev - 1
+    )
+  }
 
-        const fetchProducts = async () =>{
-
-            try {
-                const data = await index()
-                setProducts(data)
-                
-            } catch (error) {
-                console.log(error)
-            }
-        }
-
-        fetchProducts()
-
-
-    }, [])
-
-
-
-
-
-
-  return (
+      return (
     <main className="home">
 
-      <ViewProduct />
+      <section className="hero-slider">
+
+        <img
+          src={slides[currentSlide].image}
+          alt="N Designs Collection"
+          className="hero-image"
+        />
+
+   
+        <div className={`hero-content ${slides[currentSlide].position}`} >
+         
+          <h1 className="hero-title">
+            Designed to be remembered
+          </h1>
+
+          <Link to="/products" className="shop-now-btn">
+            SHOP NOW
+          </Link>
+        </div>
+
+      
+        <button
+          className="hero-arrow hero-arrow-left"
+          onClick={previousSlide}
+          aria-label="Previous image"
+        >
+          ‹
+        </button>
+
+
+        <button
+          className="hero-arrow hero-arrow-right"
+          onClick={nextSlide}
+          aria-label="Next image"
+        >
+          ›
+        </button>
+
+   
+        <div className="hero-dots">
+          {slides.map((slide, index) => (
+            <button
+              key={index}
+              className={
+                currentSlide === index
+                  ? "hero-dot active"
+                  : "hero-dot"
+              }
+              onClick={() => setCurrentSlide(index)}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
+
+      </section>
+
+
+<section className="home-categories">
+
+  <div className="categories-heading">
+    <p>DISCOVER OUR COLLECTIONS</p>
+    <h2>Shop by Category</h2>
+  </div>
+
+  <div className="category-grid">
+
+    <Link
+      to="/products?category=abayas"
+      className="category-card"
+    >
+      <img
+        src={abayaCategory}
+        alt="Abayas"
+      />
+
+      <div className="category-overlay">
+        <h3>ABAYAS</h3>
+        <span>SHOP NOW</span>
+      </div>
+    </Link>
+
+
+    <Link
+      to="/products?category=jalabya"
+      className="category-card"
+    >
+      <img
+        src={jalabiyaCategory}
+        alt="Jalabiyas"
+      />
+
+      <div className="category-overlay">
+        <h3>JALABIYAS</h3>
+        <span>SHOP NOW</span>
+      </div>
+    </Link>
+
+
+    <Link to="/products?category=dresses" className="category-card">
+    
+      <img
+        src={dressCategory}
+        alt="Dresses"
+      />
+
+      <div className="category-overlay">
+        <h3>DRESSES</h3>
+        <span>SHOP NOW</span>
+      </div>
+    </Link>
+
+  </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     </main>
   )

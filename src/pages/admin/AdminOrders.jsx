@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { indexAll, deleteOrder } from "../../services/orderService"
 
 const AdminOrders = () => {
-    
+
   const [orders, setOrders] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState("")
@@ -106,7 +106,7 @@ const AdminOrders = () => {
     Delete
   </button>
 </td>
-              </tr>
+</tr>
             ))}
           </tbody>
         </table>
