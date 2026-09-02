@@ -60,7 +60,10 @@ const Checkout = () => {
 
       setSuccess("Order submitted successfully!")
 
-    //   navigate("/products")
+      
+     setTimeout(() => {
+      navigate("/profile")
+      }, 3000)
     } 
     catch (error) {
 
