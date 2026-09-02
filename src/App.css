@@ -348,6 +348,18 @@ body {
   opacity: 0.5;
 }
 
+.navbar,
+.navBar,
+.nav-links,
+.nav-links a,
+.nav-list,
+.nav-list a,
+.nav-dropdown-title,
+.nav-dropdown-menu a,
+.nav-icons,
+.sign-out {
+  font-family: Arial, Helvetica, sans-serif;
+}
 
 /* =========================
    CART ICON
@@ -845,6 +857,41 @@ body {
   font-weight: 300;
 }
 
+/* =========================
+   GLOBAL FONTS
+========================= */
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* ALL HEADINGS */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Queensides", Georgia, serif;
+  font-weight: 400;
+}
+
+
+/* NORMAL WEBSITE TEXT */
+
+p,
+a,
+span,
+button,
+input,
+textarea,
+select,
+label {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 
 .about-page {
   min-height: calc(100vh - 140px);
@@ -1302,12 +1349,14 @@ body {
 ======================================== */
 
 .hero-title {
+
   width: 100%;
+
   max-width: 390px;
 
   margin: 0 0 22px 0;
 
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Queensides", Georgia, serif;
 
   font-size: clamp(40px, 4vw, 65px);
 
@@ -1758,7 +1807,7 @@ body {
 .categories-heading h2 {
   margin: 0;
 
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Queensides", Georgia, serif;
 
   font-size: 42px;
   font-weight: 400;
@@ -1865,7 +1914,7 @@ body {
 .category-overlay h3 {
   margin: 0 0 13px;
 
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Queensides", Georgia, serif;
 
   font-size: 35px;
   font-weight: 400;
@@ -2043,7 +2092,7 @@ body {
 .profile-header h1 {
   margin: 0;
 
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Queensides", Georgia, serif;
   font-size: clamp(42px, 6vw, 68px);
   font-weight: 400;
 
@@ -2136,7 +2185,7 @@ body {
 .profile-account-content h2 {
   margin: 0 0 27px;
 
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Queensides", Georgia, serif;
 
   font-size: 30px;
   font-weight: 400;
@@ -2185,7 +2234,7 @@ body {
 .profile-info-row svg {
   flex-shrink: 0;
 
-  color: #183d32;
+  color: #19341A;
 }
 
 
@@ -2248,7 +2297,7 @@ body {
 .profile-orders-heading h2 {
   margin: 0;
 
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Queensides", Georgia, serif;
 
   font-size: 34px;
   font-weight: 400;
@@ -2323,12 +2372,12 @@ body {
 .profile-order-header h3 {
   margin: 0;
 
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Queensides", Georgia, serif;
 
   font-size: 20px;
   font-weight: 400;
 
-  color: #183d32;
+  color: #19341A;
 }
 
 
@@ -2491,7 +2540,7 @@ body {
 .profile-empty-orders h3 {
   margin: 0 0 9px;
 
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: Arial, Helvetica, sans-serif;
 
   font-size: 23px;
   font-weight: 400;
@@ -4534,4 +4583,47 @@ body {
 
     font-size: 11px;
   }
+}
+
+/* ========================================
+   CART FONTS
+======================================== */
+
+/* CART TITLE */
+.cart .title h1 {
+  font-family: "Queensides", Georgia, serif;
+  font-weight: 400;
+}
+
+/* PRODUCT NAME */
+.cart .product span {
+  font-family: "Queensides", Georgia, serif;
+  font-weight: 400;
+}
+
+/* TOTAL PRICE */
+.cart .checkout--footer .price {
+  font-family: "Queensides", Georgia, serif;
+  font-weight: 400;
+}
+
+/* NORMAL CART TEXT */
+.cart p,
+.cart label,
+.cart button,
+.cart .quantity,
+.cart .price.small {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* CHECKOUT BUTTON */
+.cart .checkout-btn {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.cart .title h1 {
+  font-family: "Queensides", Georgia, serif;
+  font-size: 42px;
+  font-weight: 400;
+  color: #17351f;
 }

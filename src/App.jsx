@@ -25,7 +25,6 @@ import AboutUs from "./pages/About"
 import AdminOrders from "./pages/admin/AdminOrders"
 import Profile from "./pages/Customer/Profile"
 import AdminDashboard from "./pages/admin/AdminDashboard"
-// import Footer from "./components/Footer"
 
 const getUserFromToken = () => {
 
@@ -87,7 +86,7 @@ const App = () => {
 
       </Routes>
 
-      {/* <Footer /> */}
+
       </main>
     </div>
   ) 
