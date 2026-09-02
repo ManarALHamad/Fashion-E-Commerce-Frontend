@@ -12,13 +12,8 @@ import AdminProducts from "./pages/admin/AdminProducts"
 import ProductDetails from "./pages/admin/ProductDetails"
 import CustomerProductDetails from "./pages/Customer/CustomerProductDetails"
 import ProductEdit from "./pages/admin/ProductEdit"
-import NewCollection from "./pages/Customer/NewCollection"
 import Cart from "./pages/Customer/Cart"
 import WishList from "./pages/Customer/WishList"
-import RamadanCollection from "./pages/Customer/RamadanCollection"
-import EidFitrCollection from "./pages/Customer/EidFitrCollection"
-import WinterCollection from "./pages/Customer/WinterCollection"
-import EidAdhaCollection from "./pages/Customer/EidAdha"
 import Checkout from "./pages/Customer/Checkout"
 import Contact from "./pages/Contact"
 import AboutUs from "./pages/About"
@@ -69,13 +64,9 @@ const App = () => {
         <Route path="/admin/products/:productId" element={<ProductDetails />} />
         <Route path="/products" element={<ViewProduct />} />
         <Route path="products/:productId" element={<CustomerProductDetails updateCart={updateCart} setUpdateCart={setUpdateCart} /> } />
-        <Route path="/new" element={<NewCollection />} />
         <Route path="/cart" element={<Cart />}/>
         <Route path="/wishlist" element={<WishList />} />
-        <Route path="/ramadan" element={<RamadanCollection />} />
-        <Route path="/eid_fitr" element={<EidFitrCollection/>} />
-        <Route path="/winter" element={<WinterCollection/>}/>
-        <Route path="/eid_adha" element={ <EidAdhaCollection/> } />
+        <Route path="/collections" element={<Collections />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/admin/orders" element={<AdminOrders />} />
         <Route path="/admin" element={<AdminDashboard/>}/>
