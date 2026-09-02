@@ -83,4 +83,4 @@ The app will be running at `http://localhost:5173`.
 
 ## Team
 
-[Manar](https://github.com/ManarALHamad) | [Hawra](https://github.com/IHXI) | [Abdullah](https://github.com/Im-Abdullah26))
+[Manar](https://github.com/ManarALHamad) | [Hawra](https://github.com/IHXI) | [Abdullah](https://github.com/Im-Abdullah26)
