@@ -63,7 +63,6 @@ const AdminProducts = () => {
                   src={`${BASE_URL}${product.images[0].image}`}
                   alt={product.name}
                   className="admin-product-image"
-                  style={{ width: "120px", height: "150px", objectFit: "cover" }}
                 />
               ) : (
                 <div className="no-product-image">

@@ -3710,9 +3710,9 @@ label {
   text-align: center;
 
   /* use the same imported font as About Us */
-  font-family: inherit;
+  font-family: "Queensides", Georgia, serif;
 
-  font-size: 38px;
+  font-size: 48px;
   font-weight: 500;
 
   color: #17351f;
@@ -4626,4 +4626,1327 @@ label {
   font-size: 42px;
   font-weight: 400;
   color: #17351f;
+}
+
+
+/* ========================================
+   ADMIN DASHBOARD
+======================================== */
+
+.admin-dashboard-page {
+  width: 100%;
+  min-height: calc(100vh - 120px);
+
+  padding: 65px 6% 90px;
+
+  background-color: #f7f5ef;
+  color: #17351f;
+}
+
+
+/* ========================================
+   DASHBOARD TITLE
+======================================== */
+
+.admin-dashboard-page > h1 {
+  margin: 0 0 45px;
+
+  font-family: "Queensides", Georgia, serif;
+  font-size: clamp(42px, 5vw, 62px);
+  font-weight: 400;
+
+  color: #17351f;
+
+  text-align: center;
+}
+
+
+/* ========================================
+   STAT CARDS CONTAINER
+======================================== */
+
+.admin-dashboard-stats {
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 0 auto 55px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 22px;
+}
+
+
+/* ========================================
+   STAT CARD
+======================================== */
+
+.admin-stat-card {
+  position: relative;
+
+  min-height: 190px;
+
+  padding: 35px 25px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  background-color: #ffffff;
+
+  border: 1px solid #e0dcd2;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+
+/* little gold line */
+
+.admin-stat-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: 45px;
+  height: 3px;
+
+  background-color: #b99752;
+}
+
+
+/* HOVER */
+
+.admin-stat-card:hover {
+  transform: translateY(-5px);
+
+  border-color: #cfc8ba;
+
+  box-shadow: 0 14px 35px rgba(23, 53, 31, 0.08);
+}
+
+
+/* NUMBER */
+
+.admin-stat-card h2 {
+  margin: 0 0 10px;
+
+  font-family: "Queensides", Georgia, serif;
+
+  font-size: 55px;
+  font-weight: 400;
+
+  line-height: 1;
+
+  color: #17351f;
+}
+
+
+/* LABEL */
+
+.admin-stat-card p {
+  margin: 0;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 11px;
+  font-weight: 500;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+
+  color: #77776f;
+}
+
+
+/* ========================================
+   MANAGEMENT LINKS
+======================================== */
+
+.admin-dashboard-links {
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 18px;
+
+  /* hides the "/" between your Links */
+  font-size: 0;
+}
+
+
+/* BUTTONS */
+
+.admin-dashboard-link {
+  min-width: 220px;
+
+  padding: 16px 30px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #17351f;
+
+  border: 1px solid #17351f;
+
+  color: #ffffff;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 11px;
+
+  font-weight: 500;
+
+  letter-spacing: 1.8px;
+
+  text-transform: uppercase;
+
+  text-decoration: none;
+
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+/* BUTTON HOVER */
+
+.admin-dashboard-link:hover {
+  background-color: transparent;
+
+  color: #17351f;
+
+  transform: translateY(-2px);
+}
+
+
+/* ========================================
+   ERROR MESSAGE
+======================================== */
+
+.admin-dashboard-page > p {
+  margin: 50px auto;
+
+  text-align: center;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 14px;
+
+  color: #8b3d3d;
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 900px) {
+
+  .admin-dashboard-page {
+    padding: 55px 30px 80px;
+  }
+
+  .admin-dashboard-stats {
+    gap: 16px;
+  }
+
+  .admin-stat-card {
+    min-height: 165px;
+
+    padding: 28px 20px;
+  }
+
+  .admin-stat-card h2 {
+    font-size: 48px;
+  }
+
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 650px) {
+
+  .admin-dashboard-page {
+    padding: 40px 18px 60px;
+  }
+
+
+  /* TITLE */
+
+  .admin-dashboard-page > h1 {
+    margin-bottom: 32px;
+
+    font-size: 42px;
+  }
+
+
+  /* STATS */
+
+  .admin-dashboard-stats {
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+
+    margin-bottom: 35px;
+  }
+
+
+  .admin-stat-card {
+    min-height: 130px;
+
+    padding: 25px 20px;
+  }
+
+
+  .admin-stat-card h2 {
+    font-size: 44px;
+
+    margin-bottom: 8px;
+  }
+
+
+  .admin-stat-card p {
+    font-size: 10px;
+
+    letter-spacing: 1.6px;
+  }
+
+
+  /* LINKS */
+
+  .admin-dashboard-links {
+    flex-direction: column;
+
+    gap: 12px;
+  }
+
+
+  .admin-dashboard-link {
+    width: 100%;
+
+    min-width: 0;
+
+    padding: 15px 20px;
+  }
+
+}
+
+/* ========================================
+   ADMIN ORDERS PAGE
+======================================== */
+
+.admin-orders {
+  width: 100%;
+  min-height: calc(100vh - 120px);
+
+  padding: 60px 5% 90px;
+
+  background-color: #f7f5ef;
+  color: #17351f;
+
+  overflow-x: auto;
+}
+
+
+/* ========================================
+   PAGE TITLE
+======================================== */
+
+.admin-orders > h1 {
+  margin: 0 0 40px;
+
+  font-family: "Queensides", Georgia, serif;
+  font-size: clamp(42px, 5vw, 60px);
+  font-weight: 400;
+
+  color: #17351f;
+
+  text-align: center;
+}
+
+
+/* ========================================
+   TABLE
+======================================== */
+
+.admin-orders table {
+  width: 100%;
+  max-width: 1400px;
+
+  margin: 0 auto;
+
+  border-collapse: collapse;
+
+  background-color: #ffffff;
+
+  border: 1px solid #ded9cf;
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* ========================================
+   TABLE HEADER
+======================================== */
+
+.admin-orders thead {
+  background-color: #17351f;
+  color: #ffffff;
+}
+
+.admin-orders th {
+  padding: 18px 16px;
+
+  text-align: left;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+
+  white-space: nowrap;
+}
+
+
+/* ========================================
+   TABLE CELLS
+======================================== */
+
+.admin-orders td {
+  padding: 20px 16px;
+
+  border-bottom: 1px solid #ebe7df;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 13px;
+  line-height: 1.5;
+
+  color: #363d39;
+
+  vertical-align: middle;
+}
+
+
+/* ORDER NUMBER */
+
+.admin-orders td:first-child {
+  font-weight: 600;
+  color: #17351f;
+}
+
+
+/* ========================================
+   TABLE ROW
+======================================== */
+
+.admin-orders tbody tr {
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.admin-orders tbody tr:hover {
+  background-color: #f8f6f1;
+}
+
+
+/* remove border from last row */
+
+.admin-orders tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* ========================================
+   PAYMENT
+======================================== */
+
+.admin-orders td:nth-child(6) {
+  text-transform: capitalize;
+
+  font-weight: 500;
+
+  color: #5f6f67;
+}
+
+
+/* ========================================
+   TOTAL PRICE
+======================================== */
+
+.admin-orders td:nth-child(7) {
+  white-space: nowrap;
+
+  font-weight: 600;
+
+  color: #17351f;
+}
+
+
+/* ========================================
+   DATE
+======================================== */
+
+.admin-orders td:nth-child(8) {
+  white-space: nowrap;
+
+  color: #77776f;
+}
+
+
+/* ========================================
+   DELETE BUTTON
+======================================== */
+
+.admin-orders td button {
+  padding: 9px 16px;
+
+  background-color: transparent;
+
+  border: 1px solid #a84b4b;
+
+  color: #a84b4b;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 10px;
+  font-weight: 500;
+
+  letter-spacing: 1px;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.2s ease;
+}
+
+
+.admin-orders td button:hover {
+  background-color: #a84b4b;
+
+  color: #ffffff;
+
+  transform: translateY(-1px);
+}
+
+
+/* ========================================
+   EMPTY ORDERS
+======================================== */
+
+.admin-orders > p {
+  max-width: 700px;
+
+  margin: 60px auto;
+
+  padding: 45px 20px;
+
+  background-color: #ffffff;
+
+  border: 1px solid #e0dcd2;
+
+  text-align: center;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 14px;
+
+  color: #77776f;
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 1000px) {
+
+  .admin-orders {
+    padding: 50px 25px 70px;
+  }
+
+  .admin-orders table {
+    min-width: 1000px;
+  }
+
+  .admin-orders th {
+    padding: 15px 13px;
+  }
+
+  .admin-orders td {
+    padding: 17px 13px;
+
+    font-size: 12px;
+  }
+
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+  .admin-orders {
+    padding: 35px 15px 60px;
+  }
+
+  .admin-orders > h1 {
+    margin-bottom: 28px;
+
+    font-size: 42px;
+  }
+
+
+  /* Allow horizontal scrolling */
+
+  .admin-orders table {
+    min-width: 950px;
+  }
+
+
+  .admin-orders th {
+    padding: 14px 12px;
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+  }
+
+
+  .admin-orders td {
+    padding: 15px 12px;
+
+    font-size: 11px;
+  }
+
+
+  .admin-orders td button {
+    padding: 8px 13px;
+
+    font-size: 9px;
+  }
+
+}
+
+/* =========================
+   ADMIN PRODUCTS PAGE
+========================= */
+
+.admin-products-page {
+  min-height: 100vh;
+  padding: 50px 5% 80px;
+  background-color: #f7f5ef;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.admin-products-header {
+  max-width: 1200px;
+  margin: 0 auto 35px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ddd8ce;
+}
+
+.admin-products-header h1 {
+  margin: 0;
+
+  font-family: "Queensides", Georgia, serif;
+  font-size: 48px;
+  font-weight: 400;
+
+  color: #17351f;
+}
+
+
+/* ADD PRODUCT BUTTON */
+
+.admin-products-header > a {
+  padding: 12px 22px;
+
+  background-color: #17351f;
+  color: white;
+
+  border: 1px solid #17351f;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+
+  text-decoration: none;
+
+  transition: 0.2s ease;
+}
+
+.admin-products-header > a:hover {
+  background-color: transparent;
+  color: #17351f;
+}
+
+
+/* =========================
+   PRODUCTS GRID
+========================= */
+
+.admin-products-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 25px;
+}
+
+
+/* =========================
+   PRODUCT CARD
+========================= */
+
+.admin-product-card {
+  background-color: white;
+
+  border: 1px solid #e2ded5;
+
+  padding: 18px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* =========================
+   PRODUCT IMAGE
+========================= */
+
+.admin-product-image {
+  width: 100% !important;
+  height: 350px !important;
+
+  object-fit: contain;
+  object-position: center;
+
+  display: block;
+
+  background-color: #f7f5ef;
+
+  margin-bottom: 18px;
+}
+
+
+/* NO IMAGE */
+
+.no-product-image {
+  width: 100%;
+  height: 350px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 18px;
+
+  background-color: #f1eee7;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+
+  color: #888;
+}
+
+
+/* =========================
+   PRODUCT NAME
+========================= */
+
+.admin-product-card h3 {
+  margin: 0 0 10px;
+
+  font-family: "Queensides", Georgia, serif;
+  font-size: 25px;
+  font-weight: 400;
+
+  color: #17351f;
+}
+
+
+/* =========================
+   PRODUCT TEXT
+========================= */
+
+.admin-product-card p {
+  margin: 0 0 10px;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+
+  color: #555;
+}
+
+
+/* =========================
+   SIZES
+========================= */
+
+.admin-product-card > div:not(.product-actions) {
+  margin-top: 10px;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+
+  color: #444;
+}
+
+.admin-product-card > div:not(.product-actions) strong {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #17351f;
+}
+
+.admin-product-card > div:not(.product-actions) > div {
+  padding: 5px 0;
+
+  border-bottom: 1px solid #eeeae3;
+}
+
+
+/* =========================
+   VIEW / EDIT BUTTONS
+========================= */
+
+.product-actions {
+  display: flex;
+  gap: 10px;
+
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.product-actions a {
+  flex: 1;
+
+  padding: 10px;
+
+  text-align: center;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+
+  text-decoration: none;
+
+  border: 1px solid #17351f;
+
+  transition: 0.2s ease;
+}
+
+
+/* VIEW */
+
+.product-actions a:first-child {
+  background-color: #17351f;
+  color: white;
+}
+
+.product-actions a:first-child:hover {
+  background-color: #244b35;
+}
+
+
+/* EDIT */
+
+.product-actions a:last-child {
+  background-color: transparent;
+  color: #17351f;
+}
+
+.product-actions a:last-child:hover {
+  background-color: #17351f;
+  color: white;
+}
+
+
+/* =========================
+   EMPTY PRODUCTS
+========================= */
+
+.admin-products-page > p {
+  text-align: center;
+
+  margin-top: 60px;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  color: #777;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+
+  .admin-products-page {
+    padding: 40px 25px 70px;
+  }
+
+  .admin-products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .admin-product-image,
+  .no-product-image {
+    height: 330px !important;
+  }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  .admin-products-page {
+    padding: 30px 15px 50px;
+  }
+
+  .admin-products-header {
+    margin-bottom: 25px;
+  }
+
+  .admin-products-header h1 {
+    font-size: 38px;
+  }
+
+  .admin-products-header > a {
+    padding: 10px 14px;
+    font-size: 10px;
+  }
+
+  .admin-products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-product-image,
+  .no-product-image {
+    height: 400px !important;
+  }
+
+  .admin-product-card {
+    padding: 14px;
+  }
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 400px) {
+
+  .admin-products-header {
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 15px;
+  }
+
+  .admin-products-header > a {
+    width: 100%;
+    text-align: center;
+  }
+
+  .admin-product-image,
+  .no-product-image {
+    height: 350px !important;
+  }
+}
+/* ========================================
+   ADD PRODUCT PAGE
+======================================== */
+
+.add-product-page {
+  min-height: 100vh;
+
+  padding: 50px 20px 80px;
+
+  background-color: #f7f5ef;
+}
+
+
+/* ========================================
+   TITLE
+======================================== */
+
+.add-product-page > h1 {
+  margin: 0 0 35px;
+
+  text-align: center;
+
+  font-family: "Queensides", Georgia, serif;
+  font-size: 48px;
+  font-weight: 400;
+
+  color: #17351f;
+}
+
+
+/* ========================================
+   FORM
+======================================== */
+
+.add-product-page form {
+  width: 100%;
+  max-width: 700px;
+
+  margin: 0 auto;
+
+  padding: 40px;
+
+  background-color: #ffffff;
+
+  border: 1px solid #e1ddd4;
+}
+
+
+/* ========================================
+   FORM SECTIONS
+======================================== */
+
+.add-product-page form > div {
+  margin-bottom: 25px;
+}
+
+
+/* ========================================
+   LABELS
+======================================== */
+
+.add-product-page label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  color: #333;
+}
+
+
+/* ========================================
+   INPUTS / SELECT / TEXTAREA
+======================================== */
+
+.add-product-page input[type="text"],
+.add-product-page input[type="number"],
+.add-product-page input[type="file"],
+.add-product-page select,
+.add-product-page textarea {
+  width: 100%;
+
+  padding: 12px 14px;
+
+  border: 1px solid #d8d4cb;
+
+  background-color: #ffffff;
+
+  color: #333;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+
+  outline: none;
+
+  transition: border-color 0.2s ease;
+}
+
+
+/* FOCUS */
+
+.add-product-page input:focus,
+.add-product-page select:focus,
+.add-product-page textarea:focus {
+  border-color: #17351f;
+}
+
+
+/* ========================================
+   TEXTAREA
+======================================== */
+
+.add-product-page textarea {
+  min-height: 120px;
+
+  resize: vertical;
+}
+
+
+/* ========================================
+   SELECT
+======================================== */
+
+.add-product-page select {
+  cursor: pointer;
+}
+
+
+/* DISABLED SELECT */
+
+.add-product-page select:disabled {
+  background-color: #f2f0eb;
+
+  color: #999;
+
+  cursor: not-allowed;
+}
+
+
+/* ========================================
+   FILE INPUT
+======================================== */
+
+.add-product-page input[type="file"] {
+  background-color: #faf9f6;
+
+  cursor: pointer;
+}
+
+
+/* SELECTED IMAGES TEXT */
+
+.add-product-page input[type="file"] + p {
+  margin: 8px 0 0;
+
+  font-size: 11px;
+
+  color: #777;
+}
+
+
+/* ========================================
+   AVAILABLE SIZES
+======================================== */
+
+.add-product-page form > div > h3 {
+  margin: 0 0 15px;
+
+  font-family: "Queensides", Georgia, serif;
+
+  font-size: 25px;
+  font-weight: 400;
+
+  color: #17351f;
+}
+
+
+/* EACH SIZE ROW */
+
+.add-product-page form > div > h3 ~ div {
+  margin-bottom: 10px;
+
+  padding: 15px;
+
+  background-color: #f8f6f1;
+
+  border: 1px solid #ebe7df;
+}
+
+
+/* SIZE CHECKBOX LABEL */
+
+.add-product-page form > div > h3 ~ div label {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin: 0;
+
+  font-size: 13px;
+
+  cursor: pointer;
+}
+
+
+/* ========================================
+   CHECKBOXES
+======================================== */
+
+.add-product-page input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+
+  accent-color: #17351f;
+
+  cursor: pointer;
+}
+
+
+/* ========================================
+   SIZE PRICE + INVENTORY
+======================================== */
+
+.add-product-page form > div > h3 ~ div input[type="number"] {
+  margin-top: 12px;
+}
+
+
+/* ========================================
+   IN STOCK
+======================================== */
+
+.add-product-page form > div:has(input[name="in_stock"]) {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 15px;
+
+  background-color: #f8f6f1;
+
+  border: 1px solid #ebe7df;
+}
+
+
+.add-product-page form > div:has(input[name="in_stock"]) label {
+  margin: 0;
+}
+
+
+.add-product-page form > div:has(input[name="in_stock"])
+input {
+  margin: 0;
+}
+
+
+/* ========================================
+   ADD PRODUCT BUTTON
+======================================== */
+
+.add-product-page button[type="submit"] {
+  width: 100%;
+
+  padding: 14px 20px;
+
+  margin-top: 5px;
+
+  background-color: #17351f;
+
+  border: 1px solid #17351f;
+
+  color: #ffffff;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 11px;
+  font-weight: 500;
+
+  letter-spacing: 1.5px;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+
+.add-product-page button[type="submit"]:hover {
+  background-color: transparent;
+
+  color: #17351f;
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+  .add-product-page {
+    padding: 35px 15px 60px;
+  }
+
+
+  .add-product-page > h1 {
+    margin-bottom: 25px;
+
+    font-size: 40px;
+  }
+
+
+  .add-product-page form {
+    padding: 25px 18px;
+  }
+
+
+  .add-product-page form > div {
+    margin-bottom: 20px;
+  }
+
+
+  .add-product-page input[type="text"],
+  .add-product-page input[type="number"],
+  .add-product-page input[type="file"],
+  .add-product-page select,
+  .add-product-page textarea {
+    font-size: 12px;
+
+    padding: 11px 12px;
+  }
+
+
+  .add-product-page form > div > h3 {
+    font-size: 23px;
+  }
+
 }

@@ -4,6 +4,7 @@ import { index as indexProducts } from "../../services/productService"
 import { indexAll as indexAllOrders } from "../../services/orderService"
 
 const AdminDashboard = () => {
+
 const [products, setProducts] = useState([])
 const [orders, setOrders] = useState([])
 const [loading, setLoading] = useState(true)
@@ -64,12 +65,12 @@ const pendingOrders = orders.filter(
 
 <div className="admin-dashboard-links">
     <Link to="/admin/products" className="admin-dashboard-link">
-    Manage Products
-</Link>{" / "}
+  Manage Products
+</Link>
 
 <Link to="/admin/orders" className="admin-dashboard-link">
-Manage Orders
-    </Link>
+  Manage Orders
+</Link>
 </div>
     </div>
     )
