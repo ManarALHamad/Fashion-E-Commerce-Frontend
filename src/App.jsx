@@ -1,3 +1,4 @@
+
 import Nav from "./components/Nav"
 import SignUpForm from "./pages/SignUpForm"
 import './App.css'
@@ -20,6 +21,7 @@ import AboutUs from "./pages/About"
 import AdminOrders from "./pages/admin/AdminOrders"
 import Profile from "./pages/Customer/Profile"
 import AdminDashboard from "./pages/admin/AdminDashboard"
+import Collections from "./pages/Customer/Collections"
 
 const getUserFromToken = () => {
 
@@ -31,7 +33,7 @@ const getUserFromToken = () => {
 }
 
 const App = () => {
-  
+
   const navigate = useNavigate()
 
   const [user, setUser] = useState(getUserFromToken())
@@ -47,9 +49,9 @@ const App = () => {
   }, [user])
 
   const handleAddProduct = async (formData) => {
-    
+
   }
-  
+
   return (
     <div>
       <Nav user={user} setUser={setUser} updateCart={updateCart} />
@@ -77,10 +79,10 @@ const App = () => {
 
       </Routes>
 
-
+   
       </main>
     </div>
-  ) 
+  )
 }
 
 export default App
