@@ -6,7 +6,7 @@ A full-stack e-commerce web application for a women's fashion brand, built with 
 
 ## Screenshot
 
-<img width="818" height="537" alt="Screenshot 2026-09-01 213848" src="https://github.com/user-attachments/assets/a6c4dcb3-bd7b-48ba-9a32-6552cd435cb3" />
+<img width="818" height="537" alt="homepage" src="https://github.com/user-attachments/assets/a6c4dcb3-bd7b-48ba-9a32-6552cd435cb3" />
 
 ## Live Demo
 
