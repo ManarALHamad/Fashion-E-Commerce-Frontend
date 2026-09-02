@@ -1,17 +1,86 @@
-# React + Vite
+# Ndesigns — Women's Fashion E-Commerce
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack e-commerce web application for a women's fashion brand, built with a React (Vite) frontend and a Django REST Framework backend. Customers can browse products by category, sub-category, and seasonal collections, view detailed product pages with size/price/stock selection, manage a shopping cart and wishlist, and check out. Admins can manage products and process incoming orders through a dedicated dashboard.
 
-Currently, two official plugins are available:
+> Built as a final project for General Assembly's Software Engineering Immersive.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Screenshot
 
-## React Compiler
+<img width="818" height="537" alt="Screenshot 2026-09-01 213848" src="https://github.com/user-attachments/assets/a6c4dcb3-bd7b-48ba-9a32-6552cd435cb3" />
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Live Demo
 
-## Expanding the ESLint configuration
+[PLACEHOLDER: Link to the deployed frontend]
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# Fashion-E-Commerce-Frontend
+## Planning Materials
+
+[Trello Board Planning](https://trello.com/b/Td061uis/capstone-project%F0%9F%91%97)
+
+
+### Backend (Django)
+
+[Link to the backend repo](https://github.com/ManarALHamad/Fashion-E-Commerce-Backend)
+
+```bash
+cd Fashion-E-Commerce-Backend
+python -m venv .venv
+source .venv/bin/activate   # On Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+Create a `.env` file in the backend root with your database and secret key configuration:
+
+Run migrations and start the server:
+
+```bash
+python manage.py migrate
+python manage.py createsuperuser   # to create an admin account
+python manage.py runserver
+```
+
+The API will be running at `http://localhost:8000`.
+
+### Frontend (React + Vite)
+
+```bash
+cd Fashion-E-Commerce-Frontend
+npm install
+```
+
+Create a `.env` file in the frontend root:
+
+```
+VITE_BACK_END_SERVER_URL=http://localhost:8000
+```
+
+Start the dev server:
+
+```bash
+npm run dev
+```
+
+The app will be running at `http://localhost:5173`.
+
+## Technologies & Major Services Used
+
+**Frontend**
+- React (with Vite)
+- React Router
+- lucide-react (icons)
+
+**Backend**
+- Django
+- Django REST Framework
+- Simple JWT (`rest_framework_simplejwt`) for authentication
+- PostgreSQL
+
+
+## Future Enhancements
+
+- Integrate a payment gateway for online payment method.
+- Send order confirmation and admin notification emails via SMTP.
+- Reserve/decrement stock at checkout to prevent overselling.
+
+## Team
+
+[Manar](https://github.com/ManarALHamad) | [Hawra](https://github.com/IHXI) | [Abdullah](https://github.com/Im-Abdullah26))
