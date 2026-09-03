@@ -39,27 +39,22 @@ const Nav = (props) => {
                 {collectionsOpen ? (
           <ul className="nav-dropdown-menu">
             <li>
-              {/* <Link to="/new">New Collection</Link> */}
               <Link to="/collections?collection=new">New Collection</Link>
             </li>
 
             <li>
-              {/* <Link to="/ramadan">Ramadan Collection</Link> */}
               <Link to="/collections?collection=ramadan">Ramadan Collection</Link>
             </li>
 
             <li>
-              {/* <Link to="/eid_fitr">Eid Al Fitr Collection</Link> */}
               <Link to="/collections?collection=eid_fitr">Eid Al Fitr Collection</Link>
             </li>
 
             <li>
-              {/* <Link to="/winter">Winter Collection</Link> */}
               <Link to="/collections?collection=winter">Winter Collection</Link>
             </li>
 
             <li>
-              {/* <Link to="/eid_adha">Eid Al Adha Collection</Link> */}
               <Link to="/collections?collection=eid_adha">Eid Al Adha Collection</Link>
             </li>
           </ul>

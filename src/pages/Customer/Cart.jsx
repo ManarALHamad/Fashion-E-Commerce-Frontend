@@ -93,6 +93,7 @@ const Cart = () => {
         ))}
       </div>
 
+
       {/* Footer & Checkout */}
       <div className="checkout--footer">
         <div className="price">
